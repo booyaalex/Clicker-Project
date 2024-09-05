@@ -1,5 +1,14 @@
 [
     {
-        "name":"Wood_Pickaxe"
-    }
+        "name":"Plastic_Pickaxe",
+        "type": "cpc",
+        "amount": 2,
+        "desc": "I most likely got it from the dollar store."
+    },
+    {
+        "name":"Wood_Pickaxe",
+        "type": "cpc",
+        "amount": 2,
+        "desc": "Made from the finest 3 planks of wood you'll ever find."
+    },
 ]
