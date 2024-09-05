@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    font-family: pixellari;
+}
+#clicker {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    cursor: pointer;
+}
