@@ -2,9 +2,37 @@
     margin: 0;
     font-family: pixellari;
 }
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+.flex.vertical-center {
+    align-items: center;
+}
+
+.flex.between {
+    justify-content: space-between;
+}
+
+.container,
+.upgrade {
+    border: solid 2px black;
+    margin: 5px;
+}
+
 #clicker {
     width: 200px;
     height: 200px;
     background-color: black;
+}
+
+#clicker,
+.upgrade {
     cursor: pointer;
 }

@@ -3,12 +3,18 @@
         "name":"Plastic_Pickaxe",
         "type": "cpc",
         "amount": 2,
-        "desc": "I most likely got it from the dollar store."
+        "desc": "I most likely got it from the dollar store.",
+        "img": null,
+        "price": 15,
+        "bought": false
     },
     {
         "name":"Wood_Pickaxe",
         "type": "cpc",
         "amount": 2,
-        "desc": "Made from the finest 3 planks of wood you'll ever find."
-    },
+        "desc": "Made from the finest 3 planks of wood you'll ever find.",
+        "img": null,
+        "price": 100,
+        "bought": false
+    }
 ]
