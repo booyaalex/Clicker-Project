@@ -2,19 +2,67 @@
     {
         "name":"Plastic_Pickaxe",
         "type": "cpc",
+        "altType": null,
         "amount": 2,
         "desc": "I most likely got it from the dollar store.",
         "img": null,
         "price": 15,
-        "bought": false
+        "bought": false,
+        "tier": 0
     },
     {
         "name":"Wood_Pickaxe",
         "type": "cpc",
+        "altType": null,
         "amount": 2,
         "desc": "Made from the finest 3 planks of wood you'll ever find.",
         "img": null,
         "price": 100,
-        "bought": false
+        "bought": false,
+        "tier": 0
+    },
+    {
+        "name":"Starter_Backpack",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.5,
+        "desc": "Finally! I don't have to carry it back with my hands!",
+        "img": null,
+        "price": 500,
+        "bought": false,
+        "tier": 0
+    },
+    {
+        "name":"Mr. Miner",
+        "type": "cps",
+        "altType": 1,
+        "amount": 1.5,
+        "desc": "He's here to help you on your crystal mining journey!",
+        "img": null,
+        "price": 1500,
+        "bought": false,
+        "tier": 0
+    },
+    {
+        "name":"Worn_Miner_Hat",
+        "type": "cpc",
+        "altType": 1,
+        "amount": 2,
+        "desc": "It's pretty old, but it'll do for your purposes.",
+        "img": null,
+        "price": 3000,
+        "bought": false,
+        "tier": 1
+    },
+    {
+        "name":"Duel_Wielding_Pickaxes",
+        "type": "cpc",
+        "altType": 1,
+        "amount": 2,
+        "desc": "The king of the mines!",
+        "img": null,
+        "price": 5000,
+        "bought": false,
+        "tier": 0
     }
 ]

@@ -20,8 +20,13 @@
     justify-content: space-between;
 }
 
+.container {
+    max-width: 33vw;
+}
+
 .container,
-.upgrade {
+.upgrade,
+.miner {
     border: solid 2px black;
     margin: 5px;
 }
@@ -33,6 +38,7 @@
 }
 
 #clicker,
-.upgrade {
+.upgrade,
+.miner {
     cursor: pointer;
 }

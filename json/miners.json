@@ -1,0 +1,26 @@
+[
+  {
+    "name":"Starter_Miner",
+    "startingCost":100,
+    "desc":"All good quarries start somewhere.",
+    "img":null,
+    "amount":1,
+    "tier":0
+  },
+  {
+    "name":"Simple_Miner",
+    "startingCost":1300,
+    "desc":"These guys are the cream of the crop!",
+    "img":null,
+    "amount":8,
+    "tier":0
+  },
+  {
+    "name":"Power_Miners",
+    "startingCost":7000,
+    "desc":"Editor Note: This game is getting so age restricted from all of the miners.",
+    "img":null,
+    "amount":25,
+    "tier":0
+  }
+]
