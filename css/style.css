@@ -22,6 +22,8 @@
 
 .container {
     max-width: 33vw;
+    max-height: 40vh;
+    overflow-y: scroll;
 }
 
 .container,
@@ -43,4 +45,9 @@
 .miner,
 .tier {
     cursor: pointer;
+}
+
+.upgradeImage, .minerImage {
+    width: 35px;
+    margin: 5px;
 }

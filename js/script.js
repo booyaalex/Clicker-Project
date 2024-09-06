@@ -7,7 +7,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 
 let score = 0;
-let tier = 0;
+let tier = 3;
 let cpc = 1;
 let cps = 0;
 let upgrades = [];
@@ -122,7 +122,7 @@ function displayUpgrades() {
 
                 TOP_DIV.appendChild(TITLE_DIV);
 
-                const PRICE = document.createElement("h4");
+                const PRICE = document.createElement("h3");
                 PRICE.classList.add("upgradePrice");
                 textnode = document.createTextNode(`$${abbrNum(upgrades[i].price, 3)}`);
                 PRICE.appendChild(textnode);
@@ -235,7 +235,7 @@ function displayMiners() {
 
             TOP_DIV.appendChild(TITLE_DIV);
 
-            const PRICE = document.createElement("h4");
+            const PRICE = document.createElement("h3");
             PRICE.classList.add("minerPrice");
             textnode = document.createTextNode(`$${abbrNum(miners[i].price, 3)}`);
             PRICE.appendChild(textnode);
