@@ -16,11 +16,43 @@
     "tier":0
   },
   {
+    "name":"Old_Miners",
+    "startingCost":4500,
+    "desc":"They supprisingly have good mining techniques!",
+    "img":null,
+    "amount":14,
+    "tier":3
+  },
+  {
     "name":"Power_Miners",
     "startingCost":7000,
     "desc":"Editor Note: This game is getting so age restricted from all of the miners.",
     "img":null,
     "amount":25,
     "tier":0
+  },
+  {
+    "name":"Buff_Miners",
+    "startingCost":16000,
+    "desc":"They came straight from a leg day at the gym.",
+    "img":null,
+    "amount":100,
+    "tier":1
+  },
+  {
+    "name":"Blank_Miners",
+    "startingCost":125000,
+    "desc":"Blank",
+    "img":null,
+    "amount":150,
+    "tier":2
+  },
+  {
+    "name":"Blank_Miners_2",
+    "startingCost":990000,
+    "desc":"Blank",
+    "img":null,
+    "amount":225,
+    "tier":3
   }
 ]

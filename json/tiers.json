@@ -1,6 +1,6 @@
 [
   {
-    "name":"stone",
+    "name":"Stone",
     "desc":"Where are the crystals!? This game is a rip off!",
     "multiplier":1,
     "clickingBonus":0,
@@ -9,10 +9,37 @@
     "nextTier":20000
   },
   {
-    "name":"quartz",
+    "name":"Quartz",
     "desc":"Where are the crystals!? This game is a rip off!",
     "multiplier":1.5,
     "clickingBonus":3,
+    "color":"#efebff",
+    "altColor":"#c6c3d4",
+    "nextTier":200000
+  },
+  {
+    "name":"Copper",
+    "desc":"Does this really count as a crystal?",
+    "multiplier":2.25,
+    "clickingBonus":9,
+    "color":null,
+    "altColor":null,
+    "nextTier":2000000
+  },
+  {
+    "name":"Amethyst",
+    "desc":"FINALLY! A CRYSTAL!",
+    "multiplier":4,
+    "clickingBonus":20,
+    "color":null,
+    "altColor":null,
+    "nextTier":25000000
+  },
+  {
+    "name":"Topaz",
+    "desc":"mmmmmmm... yellow.",
+    "multiplier":null,
+    "clickingBonus":null,
     "color":null,
     "altColor":null,
     "nextTier":null

@@ -33,7 +33,7 @@
         "tier": 0
     },
     {
-        "name":"Mr. Miner",
+        "name":"Mr._Miner",
         "type": "cps",
         "altType": 1,
         "amount": 1.5,
@@ -64,5 +64,94 @@
         "price": 5000,
         "bought": false,
         "tier": 0
+    },
+    {
+        "name":"Duffel_Bag",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.5,
+        "desc": "Just stuff it all in there.",
+        "img": null,
+        "price": 7500,
+        "bought": false,
+        "tier": 1
+    },
+    {
+        "name":"Flashlight",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.5,
+        "desc": "Why didn't I get this sooner!",
+        "img": null,
+        "price": 20000,
+        "bought": false,
+        "tier": 2
+    },
+    {
+        "name":"Stone_Pickaxe",
+        "type": "cpc",
+        "altType": null,
+        "amount": 2,
+        "desc": "We finally upgraded from wood!",
+        "img": null,
+        "price": 35000,
+        "bought": false,
+        "tier": 1
+    },
+    {
+        "name":"Pvt._Miner",
+        "type": "cps",
+        "altType": 1,
+        "amount": 1.75,
+        "desc": "She's ready to kick some crystal a--!",
+        "img": null,
+        "price": 75000,
+        "bought": false,
+        "tier": 1
+    },
+    {
+        "name":"Copper_Pickaxe",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.75,
+        "desc": "We're starting to get somewhere!",
+        "img": null,
+        "price": 150000,
+        "bought": false,
+        "tier": 1
+    },
+    {
+        "name":"Medium_Backpack",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.5,
+        "desc": "It's getting harder to carry.",
+        "img": null,
+        "price": 500000,
+        "bought": false,
+        "tier": 2
+    },
+    {
+        "name":"Shiny_Miner_Hat",
+        "type": "cpc",
+        "altType": null,
+        "amount": 2,
+        "desc": "Looking snazzy!",
+        "img": null,
+        "price": 1500000,
+        "bought": false,
+        "tier": 3
+    },
+    {
+        "name":"Mrs._Miner",
+        "type": "cps",
+        "altType": 1,
+        "amount": 2,
+        "desc": "How many miners are there!?",
+        "img": null,
+        "price": 3400000,
+        "bought": false,
+        "tier": 3
     }
 ]
+

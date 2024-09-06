@@ -4,14 +4,16 @@ const cpsboard = document.getElementById("cps");
 const cpcboard = document.getElementById("cpc");
 const upgradeContainer = document.getElementById("upgradeContainer");
 const minerContainer = document.getElementById("minerContainer");
+const tierContainer = document.getElementById("tierContainer");
 
 let score = 0;
-let tier = 0;
+let tier = 3;
 let cpc = 1;
 let cps = 0;
 let upgrades = [];
 let miners = [];
 let minersPurchased = [];
+let tiers = [];
 let textnode;
 
 var stop = false;
@@ -23,6 +25,12 @@ window.onload = function () {
     clicker.addEventListener("click", function () {
         score = score + cpc;
         scoreboard.innerHTML = Math.trunc(score);
+    });
+    window.addEventListener("keydown", function (e) {
+        if (e.keyCode == "40") {
+            score = score + cpc;
+            scoreboard.innerHTML = Math.trunc(score);
+        }
     });
 }
 
@@ -51,7 +59,11 @@ function animate() {
         score = score + gain;
 
         //Display
-        scoreboard.innerHTML = `Crystals: ${Math.trunc(score)}`;
+        if (score >= 1000000) {
+            scoreboard.innerHTML = `Crystals: ${abbreviateNumber(Math.trunc(score), 2)}`;
+        } else {
+            scoreboard.innerHTML = `Crystals: ${Math.trunc(score)}`;
+        }
         cpsboard.innerHTML = `CPS: ${Math.trunc(cps)}`;
         cpcboard.innerHTML = `CPC: ${Math.trunc(cpc)}`;
     }
@@ -84,7 +96,7 @@ getUpgrades();
 function displayUpgrades() {
     upgradeContainer.innerHTML = "";
     for (let i = 0; i < upgrades.length; i++) {
-        console.log(upgrades[i].bought);
+        console.log(`${upgrades[i].name}: ${tier >= upgrades[i].tier}`);
         if (!upgrades[i].bought) {
             if (tier >= upgrades[i].tier) {
                 const DIV = document.createElement("div");
@@ -151,22 +163,25 @@ function buyUpgrade(a) {
 function checkUpgrades() {
     let temp_cpc = 1;
     let temp_cps = 0;
+
     for (let i = 0; i < miners.length; i++) {
-        temp_cps = temp_cps + (minersPurchased[i] * miners[i].amount);
+        temp_cps += (minersPurchased[i] * miners[i].amount);
     }
     for (let i = 0; i < upgrades.length; i++) {
         if (upgrades[i].bought) {
             if (upgrades[i].type == "cpc") {
-                temp_cpc = temp_cpc * upgrades[i].amount;
+                temp_cpc *= upgrades[i].amount;
             } else if (upgrades[i].type == "cps") {
                 if (upgrades[i].altType == 0) {
-                    temp_cps = temp_cps + upgrades[i].amount;
+                    temp_cps += upgrades[i].amount;
                 } else if (upgrades[i].altType == 1) {
-                    temp_cps = temp_cps * upgrades[i].amount;
+                    temp_cps *= upgrades[i].amount;
                 }
             }
         }
     }
+    temp_cpc += tiers[tier].clickingBonus;
+    temp_cps *= tiers[tier].multiplier;
     cpc = temp_cpc;
     cps = temp_cps;
 }
@@ -197,52 +212,54 @@ getMiners();
 function displayMiners() {
     minerContainer.innerHTML = "";
     for (let i = 0; i < miners.length; i++) {
-        const DIV = document.createElement("div");
-        DIV.id = i;
-        DIV.classList.add("miner");
-        DIV.setAttribute("onclick", "buyMiner(this.id)");
+        if (tier >= miners[i].tier) {
+            const DIV = document.createElement("div");
+            DIV.id = i;
+            DIV.classList.add("miner");
+            DIV.setAttribute("onclick", "buyMiner(this.id)");
 
-        const TOP_DIV = document.createElement("div");
-        TOP_DIV.classList.add("flex");
-        TOP_DIV.classList.add("vertical-center");
-        TOP_DIV.classList.add("between");
+            const TOP_DIV = document.createElement("div");
+            TOP_DIV.classList.add("flex");
+            TOP_DIV.classList.add("vertical-center");
+            TOP_DIV.classList.add("between");
 
-        const TITLE_DIV = document.createElement("div");
-        TITLE_DIV.classList.add("flex");
-        TITLE_DIV.classList.add("vertical-center");
+            const TITLE_DIV = document.createElement("div");
+            TITLE_DIV.classList.add("flex");
+            TITLE_DIV.classList.add("vertical-center");
 
-        const IMG = document.createElement("img");
-        IMG.src = miners[i].img;
-        IMG.alt = miners[i].name;
-        IMG.classList.add("minerImage");
-        TITLE_DIV.appendChild(IMG);
+            const IMG = document.createElement("img");
+            IMG.src = miners[i].img;
+            IMG.alt = miners[i].name;
+            IMG.classList.add("minerImage");
+            TITLE_DIV.appendChild(IMG);
 
-        const TITLE = document.createElement("h3");
-        TITLE.classList.add("minerTitle");
-        textnode = document.createTextNode(miners[i].name.replace(/_/g, " "));
-        TITLE.appendChild(textnode);
-        TITLE_DIV.appendChild(TITLE);
+            const TITLE = document.createElement("h3");
+            TITLE.classList.add("minerTitle");
+            textnode = document.createTextNode(miners[i].name.replace(/_/g, " "));
+            TITLE.appendChild(textnode);
+            TITLE_DIV.appendChild(TITLE);
 
-        TOP_DIV.appendChild(TITLE_DIV);
+            TOP_DIV.appendChild(TITLE_DIV);
 
-        const PRICE = document.createElement("h4");
-        PRICE.classList.add("minerPrice");
-        textnode = document.createTextNode(`$${miners[i].price}`);
-        PRICE.appendChild(textnode);
-        TOP_DIV.appendChild(PRICE);
+            const PRICE = document.createElement("h4");
+            PRICE.classList.add("minerPrice");
+            textnode = document.createTextNode(`$${miners[i].price}`);
+            PRICE.appendChild(textnode);
+            TOP_DIV.appendChild(PRICE);
 
-        const BOTTOM_DIV = document.createElement("div");
-        BOTTOM_DIV.classList.add("flex");
+            const BOTTOM_DIV = document.createElement("div");
+            BOTTOM_DIV.classList.add("flex");
 
-        const DESC = document.createElement("p");
-        DESC.classList.add("minerDesc");
-        textnode = document.createTextNode(miners[i].desc);
-        DESC.appendChild(textnode);
-        BOTTOM_DIV.appendChild(DESC);
+            const DESC = document.createElement("p");
+            DESC.classList.add("minerDesc");
+            textnode = document.createTextNode(miners[i].desc);
+            DESC.appendChild(textnode);
+            BOTTOM_DIV.appendChild(DESC);
 
-        DIV.appendChild(TOP_DIV);
-        DIV.appendChild(BOTTOM_DIV);
-        minerContainer.appendChild(DIV);
+            DIV.appendChild(TOP_DIV);
+            DIV.appendChild(BOTTOM_DIV);
+            minerContainer.appendChild(DIV);
+        }
     }
 }
 
@@ -258,3 +275,80 @@ function buyMiner(a) {
     }
 }
 
+async function getTiers() {
+    const response = await fetch("json/tiers.json");
+    const JSON = await response.json();
+    console.log(JSON);
+    tiers = [];
+    for (let i = 0; i < JSON.length; i++) {
+        const tier = {
+            name: JSON[i].name,
+            desc: JSON[i].desc,
+            multiplier: JSON[i].multiplier,
+            clickingBonus: JSON[i].clickingBonus,
+            color: JSON[i].color,
+            altColor: JSON[i].altColor,
+            nextTier: JSON[i].nextTier
+        };
+        tiers.push(tier);
+    }
+    displayTier();
+    checkUpgrades();
+}
+getTiers();
+
+function displayTier() {
+    tierContainer.innerHTML = "";
+
+    const CURRENT_TIER = document.createElement("h2");
+    console.log(tiers[tier].name);
+    textnode = document.createTextNode(`Current Tier: ${tiers[tier].name}`);
+    CURRENT_TIER.appendChild(textnode);
+    tierContainer.appendChild(CURRENT_TIER);
+
+    const NEXT_TIER = document.createElement("h2");
+    textnode = document.createTextNode(`Next Tier: ${tiers[tier + 1].name}`);
+    NEXT_TIER.appendChild(textnode);
+    tierContainer.appendChild(NEXT_TIER);
+
+    const UPGRADE_DIV = document.createElement("div");
+    UPGRADE_DIV.classList.add("tier");
+    UPGRADE_DIV.setAttribute("onclick", "upgradeTier()");
+
+    const UPGRADE_TEXT = document.createElement("h3");
+    textnode = document.createTextNode("Upgrade");
+    UPGRADE_TEXT.appendChild(textnode);
+    UPGRADE_DIV.appendChild(UPGRADE_TEXT);
+
+    const UPGRADE_COST = document.createElement("p");
+    textnode = document.createTextNode(`$${tiers[tier].nextTier}`);
+    UPGRADE_COST.appendChild(textnode);
+    UPGRADE_DIV.appendChild(UPGRADE_COST);
+
+    tierContainer.appendChild(UPGRADE_DIV);
+}
+
+function upgradeTier() {
+    console.log(tiers[tier].nextTier);
+    if (score >= tiers[tier].nextTier) {
+        tier++;
+        score = 0;
+        upgrades = [];
+        miners = [];
+        minersPurchased = [];
+        cpc = 1;
+        cps = 0;
+        getUpgrades();
+        getMiners();
+        displayTier();
+    }
+}
+
+function shortenNumber(a) {
+    const charArray = [];
+    for (let i = 0; i < a.toString().length; i++) {
+        charArray.push(a.toString().charAt(i));
+    }
+    console.log(charArray);
+
+}

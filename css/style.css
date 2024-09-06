@@ -26,7 +26,8 @@
 
 .container,
 .upgrade,
-.miner {
+.miner,
+.tier {
     border: solid 2px black;
     margin: 5px;
 }
@@ -39,6 +40,7 @@
 
 #clicker,
 .upgrade,
-.miner {
+.miner,
+.tier {
     cursor: pointer;
 }
