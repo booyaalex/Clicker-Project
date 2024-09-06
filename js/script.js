@@ -7,7 +7,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 
 let score = 0;
-let tier = 3;
+let tier = 0;
 let cpc = 1;
 let cps = 0;
 let upgrades = [];
