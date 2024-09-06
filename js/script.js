@@ -60,7 +60,7 @@ function animate() {
 
         //Display
         if (score >= 1000000) {
-            scoreboard.innerHTML = `Crystals: ${abbreviateNumber(Math.trunc(score), 2)}`;
+            scoreboard.innerHTML = `Crystals: ${abbriviate(Math.trunc(score), 2)}`;
         } else {
             scoreboard.innerHTML = `Crystals: ${Math.trunc(score)}`;
         }

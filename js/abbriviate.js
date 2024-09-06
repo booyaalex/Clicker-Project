@@ -1,5 +1,5 @@
 import { abbreviateNumber } from "js-abbreviation-number";
 
-function abbriviate() {
-    
+function abbriviate(a, b) {
+
 }
