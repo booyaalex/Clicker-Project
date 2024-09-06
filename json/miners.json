@@ -40,17 +40,17 @@
     "tier":1
   },
   {
-    "name":"Blank_Miners",
+    "name":"Squirtle_Miners",
     "startingCost":125000,
-    "desc":"Blank",
+    "desc":"With the cool shades!",
     "img":null,
     "amount":150,
     "tier":2
   },
   {
-    "name":"Blank_Miners_2",
+    "name":"Legendary_Miners",
     "startingCost":990000,
-    "desc":"Blank",
+    "desc":"In the flesh.",
     "img":null,
     "amount":225,
     "tier":3
