@@ -54,5 +54,13 @@
     "img":null,
     "amount":225,
     "tier":3
+  },
+  {
+    "name":"Squirrels",
+    "startingCost":5100000,
+    "desc":"Do not underestimate them when they want their acorns.",
+    "img":null,
+    "amount":330,
+    "tier":3
   }
 ]

@@ -22,8 +22,8 @@
     "desc":"Does this really count as a crystal?",
     "multiplier":2.25,
     "clickingBonus":9,
-    "color":null,
-    "altColor":null,
+    "color":"#ad522b",
+    "altColor":"#2c916c",
     "nextTier":2000000
   },
   {
@@ -38,6 +38,60 @@
   {
     "name":"Topaz",
     "desc":"mmmmmmm... yellow.",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Aquamarine",
+    "desc":"The emerald ripoff.",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Unnamed Crimson Crystal",
+    "desc":"Even I don't know what it is. At least it's a crystal.",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Saphirre",
+    "desc":"Ooh, shiny blue!",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Candy?",
+    "desc":"What do you mean candy?",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Ruby",
+    "desc":"It's red, is that good enough for you?",
+    "multiplier":null,
+    "clickingBonus":null,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
+  },
+  {
+    "name":"Diamond",
+    "desc":"We can make a good pickaxe with this stuff!",
     "multiplier":null,
     "clickingBonus":null,
     "color":null,

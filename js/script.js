@@ -59,11 +59,7 @@ function animate() {
         score = score + gain;
 
         //Display
-        if (score >= 1000000) {
-            scoreboard.innerHTML = `Crystals: ${abbriviate(Math.trunc(score), 2)}`;
-        } else {
-            scoreboard.innerHTML = `Crystals: ${Math.trunc(score)}`;
-        }
+        scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
         cpsboard.innerHTML = `CPS: ${Math.trunc(cps)}`;
         cpcboard.innerHTML = `CPC: ${Math.trunc(cpc)}`;
     }
@@ -96,7 +92,6 @@ getUpgrades();
 function displayUpgrades() {
     upgradeContainer.innerHTML = "";
     for (let i = 0; i < upgrades.length; i++) {
-        console.log(`${upgrades[i].name}: ${tier >= upgrades[i].tier}`);
         if (!upgrades[i].bought) {
             if (tier >= upgrades[i].tier) {
                 const DIV = document.createElement("div");
@@ -129,7 +124,7 @@ function displayUpgrades() {
 
                 const PRICE = document.createElement("h4");
                 PRICE.classList.add("upgradePrice");
-                textnode = document.createTextNode(`$${upgrades[i].price}`);
+                textnode = document.createTextNode(`$${abbrNum(upgrades[i].price, 3)}`);
                 PRICE.appendChild(textnode);
                 TOP_DIV.appendChild(PRICE);
 
@@ -152,7 +147,6 @@ function displayUpgrades() {
 
 function buyUpgrade(a) {
     const upgrade = upgrades[a];
-    console.log(upgrade);
     if (score >= upgrade.price) {
         score = score - upgrade.price;
         upgrades[a].bought = true;
@@ -243,7 +237,7 @@ function displayMiners() {
 
             const PRICE = document.createElement("h4");
             PRICE.classList.add("minerPrice");
-            textnode = document.createTextNode(`$${miners[i].price}`);
+            textnode = document.createTextNode(`$${abbrNum(miners[i].price, 3)}`);
             PRICE.appendChild(textnode);
             TOP_DIV.appendChild(PRICE);
 
@@ -265,7 +259,6 @@ function displayMiners() {
 
 function buyMiner(a) {
     const miner = miners[a];
-    console.log(miner);
     if (score >= miner.price) {
         score = score - miner.price;
         minersPurchased[a]++;
@@ -321,7 +314,7 @@ function displayTier() {
     UPGRADE_DIV.appendChild(UPGRADE_TEXT);
 
     const UPGRADE_COST = document.createElement("p");
-    textnode = document.createTextNode(`$${tiers[tier].nextTier}`);
+    textnode = document.createTextNode(`$${abbrNum(tiers[tier].nextTier, 3)}`);
     UPGRADE_COST.appendChild(textnode);
     UPGRADE_DIV.appendChild(UPGRADE_COST);
 
@@ -344,11 +337,21 @@ function upgradeTier() {
     }
 }
 
-function shortenNumber(a) {
-    const charArray = [];
-    for (let i = 0; i < a.toString().length; i++) {
-        charArray.push(a.toString().charAt(i));
+const abbrNum = (number, decPlaces) => {
+    decPlaces = Math.pow(10, decPlaces);
+    let abbrev = ['K', 'M', 'B', 'T', 'Q', 'Qi'];
+    for (let i = abbrev.length - 1; i >= 0; i--) {
+      let size = Math.pow(10, (i + 1) * 3);
+      if (size <= number) {
+        number = Math.round((number * decPlaces) / size) / decPlaces;
+        if (number == 1000 && i < abbrev.length - 1) {
+          number = 1;
+          i++;
+        }
+        number += abbrev[i];
+        break;
+      }
     }
-    console.log(charArray);
-
-}
+  
+    return number;
+  }
