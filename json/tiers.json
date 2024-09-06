@@ -5,6 +5,16 @@
     "multiplier":1,
     "clickingBonus":0,
     "color":"#c9bab3",
-    "altColor":"#968b86"
+    "altColor":"#968b86",
+    "nextTier":20000
+  },
+  {
+    "name":"quartz",
+    "desc":"Where are the crystals!? This game is a rip off!",
+    "multiplier":1.5,
+    "clickingBonus":3,
+    "color":null,
+    "altColor":null,
+    "nextTier":null
   }
 ]
