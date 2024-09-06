@@ -1,6 +1,7 @@
 const clicker = document.getElementById("clicker");
 const scoreboard = document.getElementById("score");
 const cpsboard = document.getElementById("cps");
+const cpcboard = document.getElementById("cpc");
 const upgradeContainer = document.getElementById("upgradeContainer");
 const minerContainer = document.getElementById("minerContainer");
 
@@ -52,6 +53,7 @@ function animate() {
         //Display
         scoreboard.innerHTML = `Crystals: ${Math.trunc(score)}`;
         cpsboard.innerHTML = `CPS: ${Math.trunc(cps)}`;
+        cpcboard.innerHTML = `CPC: ${Math.trunc(cpc)}`;
     }
 }
 
@@ -252,25 +254,7 @@ function buyMiner(a) {
         minersPurchased[a]++;
         miners[a].price = Math.ceil(miners[a].price * 1.15 ^ minersPurchased[a]);
         displayMiners();
-        updateMiners();
+        checkUpgrades();
     }
 }
 
-function updateMiners() {
-    let temp_cps = 0;
-    for (let i = 0; i < miners.length; i++) {
-        temp_cps = temp_cps + (minersPurchased[i] * miners[i].amount);
-    }
-    for (let i = 0; i < upgrades.length; i++) {
-        if (upgrades[i].bought) {
-            if (upgrades[i].type == "cps") {
-                if (upgrades[i].altType == 0) {
-                    temp_cps = temp_cps + upgrades[i].amount;
-                } else if (upgrades[i].altType == 1) {
-                    temp_cps = temp_cps * upgrades[i].amount;
-                }
-            }
-        }
-    }
-    cps = temp_cps;
-}
