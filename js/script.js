@@ -60,8 +60,8 @@ function animate() {
 
         //Display
         scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
-        cpsboard.innerHTML = `CPS: ${Math.trunc(cps)}`;
-        cpcboard.innerHTML = `CPC: ${Math.trunc(cpc)}`;
+        cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 3)}`;
+        cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
     }
 }
 

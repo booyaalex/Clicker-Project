@@ -38,11 +38,11 @@
   {
     "name":"Topaz",
     "desc":"mmmmmmm... yellow.",
-    "multiplier":null,
-    "clickingBonus":null,
+    "multiplier":5.75,
+    "clickingBonus":45,
     "color":null,
     "altColor":null,
-    "nextTier":null
+    "nextTier":115000000
   },
   {
     "name":"Aquamarine",

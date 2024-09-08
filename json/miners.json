@@ -40,6 +40,14 @@
     "tier":1
   },
   {
+    "name":"Old Drilling Machines",
+    "startingCost":35000,
+    "desc":"The run on a crank, but it's not a bad start to automation.",
+    "img":null,
+    "amount":145,
+    "tier":4
+  },
+  {
     "name":"Squirtle_Miners",
     "startingCost":125000,
     "desc":"With the cool shades!",
@@ -62,5 +70,13 @@
     "img":null,
     "amount":330,
     "tier":3
+  },
+  {
+    "name":"Epic Miners",
+    "startingCost":15000000,
+    "desc":"Oh so epic!",
+    "img":null,
+    "amount":400,
+    "tier":4
   }
 ]

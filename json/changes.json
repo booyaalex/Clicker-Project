@@ -7,5 +7,12 @@
             "Added numerous upgrades and miners.",
             "Bigger numbers are now abbriviated."
         ]
+    },
+    {
+        "date":"8-9-24",
+        "title":"Topaz Tier",
+        "bullets": [
+            "Finished the Topaz Tier, which adds a bunch of new upgrades."
+        ]
     }
 ]
