@@ -19,6 +19,23 @@
 .flex.between {
     justify-content: space-between;
 }
+.flex.column {
+    flex-direction: column;
+}
+.flex.bigSec {
+    width: 60%;
+    background-color:red;
+}
+.flex.smallSec {
+    width: 40%;
+    background-color:blue;
+}
+.flex.column > .flex.bigSec {
+    height: 60%;
+}
+.flex.column > .flex.smallSec {
+    height: 40%;
+}
 
 .container {
     max-width: 33vw;
