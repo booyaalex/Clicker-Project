@@ -209,6 +209,9 @@ function displayMiners() {
         if (tier >= miners[i].tier) {
             const MAIN_DIV = document.createElement("div");
             MAIN_DIV.id = i;
+            MAIN_DIV.classList.add("flex");
+            MAIN_DIV.classList.add("nowrap");
+            MAIN_DIV.classList.add("vertical-center");
             MAIN_DIV.setAttribute("onclick", "buyMiner(this.id)");
 
             const COUNT = document.createElement("h2");
