@@ -14,5 +14,12 @@
         "bullets": [
             "Finished the Topaz Tier, which adds a bunch of new upgrades."
         ]
+    },
+    {
+        "date":"9-9-24",
+        "title":"UI Changes",
+        "bullets": [
+            "Made some changes to the UI to make way for pixel art and other UI stuff."
+        ]
     }
 ]

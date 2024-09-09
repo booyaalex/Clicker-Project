@@ -5,7 +5,7 @@
         "altType": null,
         "amount": 2,
         "desc": "I most likely got it from the dollar store.",
-        "img": "../img/upgrades/plastic_pickaxe.png.png",
+        "img": "img/upgrades/plastic_pickaxe.png.png",
         "price": 15,
         "bought": false,
         "tier": 0
@@ -16,7 +16,7 @@
         "altType": null,
         "amount": 2,
         "desc": "Made from the finest 3 planks of wood you'll ever find.",
-        "img": "../img/upgrades/wood_pickaxe.png.png",
+        "img": "img/upgrades/wood_pickaxe.png.png",
         "price": 100,
         "bought": false,
         "tier": 0
@@ -93,7 +93,7 @@
         "altType": null,
         "amount": 2,
         "desc": "We finally upgraded from wood!",
-        "img": "../img/upgrades/stone_pickaxe.png.png",
+        "img": "img/upgrades/stone_pickaxe.png.png",
         "price": 35000,
         "bought": false,
         "tier": 1
@@ -115,7 +115,7 @@
         "altType": null,
         "amount": 1.75,
         "desc": "We're starting to get somewhere!",
-        "img": "../img/upgrades/copper_pickaxe.png.png",
+        "img": "img/upgrades/copper_pickaxe.png.png",
         "price": 150000,
         "bought": false,
         "tier": 1

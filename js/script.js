@@ -207,10 +207,19 @@ function displayMiners() {
     minerContainer.innerHTML = "";
     for (let i = 0; i < miners.length; i++) {
         if (tier >= miners[i].tier) {
+            const MAIN_DIV = document.createElement("div");
+            MAIN_DIV.id = i;
+            MAIN_DIV.setAttribute("onclick", "buyMiner(this.id)");
+
+            const COUNT = document.createElement("h2");
+            textnode = document.createTextNode(minersPurchased[i]);
+            COUNT.appendChild(textnode);
+            MAIN_DIV.appendChild(COUNT);
+
             const DIV = document.createElement("div");
-            DIV.id = i;
             DIV.classList.add("miner");
-            DIV.setAttribute("onclick", "buyMiner(this.id)");
+            DIV.classList.add("flex");
+            DIV.classList.add("vertical-align");
 
             const TOP_DIV = document.createElement("div");
             TOP_DIV.classList.add("flex");
@@ -252,7 +261,8 @@ function displayMiners() {
 
             DIV.appendChild(TOP_DIV);
             DIV.appendChild(BOTTOM_DIV);
-            minerContainer.appendChild(DIV);
+            MAIN_DIV.appendChild(DIV);
+            minerContainer.appendChild(MAIN_DIV);
         }
     }
 }

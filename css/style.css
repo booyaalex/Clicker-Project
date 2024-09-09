@@ -32,12 +32,10 @@ body, main {
 .flex.bigSec {
     width: 70%;
     height: 100%;
-    background-color:red;
 }
 .flex.smallSec {
     width: 30%;
     height: 100%;
-    background-color:blue;
 }
 .flex.column > .flex.bigSec {
     width: 100%;
