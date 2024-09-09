@@ -3,6 +3,10 @@
     font-family: pixellari;
 }
 
+body {
+    height: 100vh;
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -44,13 +48,10 @@
     height: 30%;
 }
 
-.container {
-    max-width: 33vw;
-    max-height: 40vh;
+#upgradeContainer, #minerContainer {
     overflow-y: scroll;
 }
 
-.container,
 .upgrade,
 .miner,
 .tier {
