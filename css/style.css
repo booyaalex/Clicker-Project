@@ -72,6 +72,10 @@ body, main {
     width: 200px;
     height: 200px;
     background-color: black;
+    animation-duration: 3s;
+    animation-name: rotation;
+    animation-iteration-count: infinite;
+    transition-duration: 0.2s;
 }
 
 #clicker,
@@ -86,13 +90,9 @@ body, main {
     margin: 5px;
 }
 
-#clicker {
-    animation-duration: 3s;
-    animation-name: rotation;
-    animation-iteration-count: infinite;
-}
 #clicker:hover {
-    transform: scale(1.1);
+    width: 275px;
+    height: 275px;
 }
 
 @keyframes rotation {
