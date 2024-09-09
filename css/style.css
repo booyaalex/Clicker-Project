@@ -68,6 +68,10 @@ body, main {
     margin: 5px;
 }
 
+#clickingContainer {
+    position: relative;
+}
+
 #clicker {
     width: 200px;
     height: 200px;
@@ -78,7 +82,7 @@ body, main {
     transition-duration: 0.2s;
     position: absolute;
     top: calc(50% - 105px);
-    left: calc(50% - 105px);
+    left: calc(50% - 112px);
 }
 
 #clicker,
@@ -91,11 +95,6 @@ body, main {
 .upgradeImage, .minerImage {
     width: 35px;
     margin: 5px;
-}
-
-#clicker:hover {
-    width: 225px;
-    height: 225px;
 }
 
 @keyframes rotation {
