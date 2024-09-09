@@ -76,6 +76,9 @@ body, main {
     animation-name: rotation;
     animation-iteration-count: infinite;
     transition-duration: 0.2s;
+    position: absolute;
+    top: calc(50% - 105px);
+    left: calc(50% - 105px);
 }
 
 #clicker,
@@ -91,8 +94,8 @@ body, main {
 }
 
 #clicker:hover {
-    width: 275px;
-    height: 275px;
+    width: 225px;
+    height: 225px;
 }
 
 @keyframes rotation {
