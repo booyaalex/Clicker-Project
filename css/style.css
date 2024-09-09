@@ -7,6 +7,13 @@ body, main {
     height: 100vh;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -90,14 +97,14 @@ body, main {
 
 @keyframes rotation {
     0% {
-        transform: rotate(-30deg);
+        transform: rotate(-20deg);
     }
 
     50% {
-        transform: rotate(30deg);
+        transform: rotate(20deg);
     }
 
     100% {
-        transform: rotate(-30deg);
+        transform: rotate(-20deg);
     }
 }
