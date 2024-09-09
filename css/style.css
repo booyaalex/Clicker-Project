@@ -50,6 +50,10 @@ body, main {
     overflow-y: scroll;
 }
 
+.miner {
+    width: 100%;
+}
+
 .upgrade,
 .miner,
 .tier {

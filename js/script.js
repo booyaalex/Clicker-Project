@@ -221,8 +221,6 @@ function displayMiners() {
 
             const DIV = document.createElement("div");
             DIV.classList.add("miner");
-            DIV.classList.add("flex");
-            DIV.classList.add("vertical-align");
 
             const TOP_DIV = document.createElement("div");
             TOP_DIV.classList.add("flex");
