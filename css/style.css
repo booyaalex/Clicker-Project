@@ -27,16 +27,20 @@
 }
 .flex.bigSec {
     width: 70%;
+    height: 100%;
     background-color:red;
 }
 .flex.smallSec {
     width: 30%;
+    height: 100%;
     background-color:blue;
 }
 .flex.column > .flex.bigSec {
+    width: 100%;
     height: 70%;
 }
 .flex.column > .flex.smallSec {
+    width: 100%;
     height: 30%;
 }
 
