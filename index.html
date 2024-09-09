@@ -14,7 +14,7 @@
 <body>
     <main>
         <div class="flex">
-            <div class="flex column bigSec">
+            <div class="flex column bigSec nowrap">
                 <div id="clickingContainer" class="flex bigSec container">
                     <h1 id="score">Crystals: 0</h1>
                     <h2 id="cps">CPS: 0</h2>
@@ -30,13 +30,11 @@
                     </div>
                 </div>
             </div>
-            <div class="flex column smallSec"></div>
+            <div class="flex column smallSec nowrap">
+                <div id="upgradeContainer" class="flex column smallSec nowrap container"></div>
+                <div id="minerContainer" class="flex column bigSec nowrap container"></div>
+            </div>
         </div>
-        <div class="flex between">
-            <div id="upgradeContainer" class="container"></div>
-            <div id="minerContainer" class="container"></div>
-        </div>
-        
     </main>
     <script type="module" src="js/abbriviate.js"></script>
     <script src="js/script.js"></script>
