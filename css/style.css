@@ -82,7 +82,7 @@ body, main {
     transition-duration: 0.2s;
     position: absolute;
     top: calc(50% - 105px);
-    left: calc(50% - 112px);
+    left: calc(50% - 100px);
 }
 
 #clicker,
@@ -108,5 +108,11 @@ body, main {
 
     100% {
         transform: rotate(-20deg);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .flex.bigSec, .flex.smallSec {
+        width: 100%;
     }
 }

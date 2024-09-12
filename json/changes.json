@@ -23,5 +23,13 @@
             "Added a miner count to konw how many miners you've bought.",
             "I got the clicker to rotate, and I'm proud. The clicker is also in the center of the clicking box"
         ]
+    },
+    {
+        "date":"12-9-24",
+        "title":"UI Changes",
+        "bullets": [
+            "I added a temorary background color to the clicking container that represents your tier.",
+            "The UI changes on smaller screens so stuff looks better."
+        ]
     }
 ]

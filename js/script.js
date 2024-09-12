@@ -2,6 +2,7 @@ const clicker = document.getElementById("clicker");
 const scoreboard = document.getElementById("score");
 const cpsboard = document.getElementById("cps");
 const cpcboard = document.getElementById("cpc");
+const clickingContainer = document.getElementById("clickingContainer");
 const upgradeContainer = document.getElementById("upgradeContainer");
 const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
@@ -303,7 +304,8 @@ getTiers();
 
 function displayTier() {
     tierContainer.innerHTML = "";
-
+    
+    clickingContainer.style.backgroundColor = tiers[tier].color;
     const CURRENT_TIER = document.createElement("h2");
     console.log(tiers[tier].name);
     textnode = document.createTextNode(`Current Tier: ${tiers[tier].name}`);
