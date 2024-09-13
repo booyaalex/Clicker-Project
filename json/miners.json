@@ -56,6 +56,14 @@
     "tier":2
   },
   {
+    "name":"Mr Hamilton",
+    "startingCost":350000,
+    "desc":"don't ask...",
+    "img":null,
+    "amount":190,
+    "tier":5
+  },
+  {
     "name":"Legendary_Miners",
     "startingCost":990000,
     "desc":"In the flesh.",
@@ -78,5 +86,21 @@
     "img":null,
     "amount":400,
     "tier":4
+  },
+  {
+    "name":"Mr Hamilton",
+    "startingCost":35000000,
+    "desc":"don't ask...",
+    "img":null,
+    "amount":455,
+    "tier":4
+  },
+  {
+    "name":"Ghostly Miners",
+    "startingCost":80000000,
+    "desc":"There's plenty of them in District 12.",
+    "img":null,
+    "amount":455,
+    "tier":5
   }
 ]
