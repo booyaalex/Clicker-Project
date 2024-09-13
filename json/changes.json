@@ -32,5 +32,13 @@
             "The UI changes on smaller screens so stuff looks better.",
             "I started work on the Aquamarine Tier, or tier 6(I think)."
         ]
+    },
+    {
+        "date":"13-9-24",
+        "title":"UI Changes",
+        "bullets": [
+            "Added a temporary background image instead of a color.",
+            "Made a box for the score, cps, and cpc."
+        ]
     }
 ]

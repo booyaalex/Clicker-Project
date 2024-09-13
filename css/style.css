@@ -3,7 +3,8 @@
     font-family: pixellari;
 }
 
-body, main {
+body,
+main {
     height: 100vh;
 }
 
@@ -30,35 +31,40 @@ body, main {
 .flex.between {
     justify-content: space-between;
 }
+
 .flex.column {
     flex-direction: column;
 }
+
 .flex.nowrap {
     flex-wrap: nowrap;
 }
+
 .flex.bigSec {
     width: 70%;
     height: 100%;
 }
+
 .flex.smallSec {
     width: 30%;
     height: 100%;
 }
-.flex.column > .flex.bigSec {
+
+.flex.column>.flex.bigSec {
     width: 100%;
     height: 70%;
 }
-.flex.column > .flex.smallSec {
+
+.flex.column>.flex.smallSec {
     width: 100%;
     height: 30%;
 }
 
-#upgradeContainer, #minerContainer {
-    overflow-y: scroll;
-}
-
-.miner {
-    width: 100%;
+#clicker,
+.upgrade,
+.miner,
+.tier {
+    cursor: pointer;
 }
 
 .upgrade,
@@ -67,9 +73,56 @@ body, main {
     border: solid 2px black;
     margin: 5px;
 }
+/*#upgradeContainer,
+#minerContainer,
+#tierContainer {
+    background-color: #411e08;
+}*/
+
+#upgradeContainer,
+#minerContainer {
+    overflow-y: scroll;
+}
+
+.upgradeImage,
+.minerImage {
+    width: 35px;
+    margin: 5px;
+}
+
+.miner {
+    width: 100%;
+}
 
 #clickingContainer {
     position: relative;
+    background-image: url("https://art.ngfiles.com/images/1131000/1131823_vannzilla_pixel-art-cave-background.png?f1578086175");
+    background-size: cover;
+    background-position: 0;
+}
+
+#scoreContainer {
+    background-color: #411e08;
+    padding: 13px;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    color: #cbab85;
+    border-radius: 10px;
+    width: 280px;
+    z-index: 2;
+}
+
+#scoreContainer:before {
+    background: none;
+    border: solid 3px #c98964;
+    position: absolute;
+    content: "";
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 10px;
 }
 
 #clicker {
@@ -83,18 +136,6 @@ body, main {
     position: absolute;
     top: calc(50% - 105px);
     left: calc(50% - 100px);
-}
-
-#clicker,
-.upgrade,
-.miner,
-.tier {
-    cursor: pointer;
-}
-
-.upgradeImage, .minerImage {
-    width: 35px;
-    margin: 5px;
 }
 
 @keyframes rotation {
@@ -112,7 +153,18 @@ body, main {
 }
 
 @media only screen and (max-width: 768px) {
-    .flex.bigSec, .flex.smallSec {
+    .flex.bigSec,
+    .flex.smallSec {
         width: 100%;
+    }
+
+    #scoreContainer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #clicker {
+        top: calc(65% - 105px);
     }
 }
