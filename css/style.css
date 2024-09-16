@@ -3,9 +3,15 @@
     font-family: pixellari;
 }
 
+::-webkit-scrollbar { 
+    display: none;
+}
+
 body {
     height: 100vh;
     background-color: #343442;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 nav {
@@ -81,6 +87,9 @@ main {
     overflow-y: scroll;
     height: 100%;
 }
+.split {
+    width: 50%;
+}
 .container {
     background-color: #411e08;
     color: #e0c19b;
@@ -103,6 +112,10 @@ main {
 #logoImage {
     width: 300px;
     height: 100%;
+}
+
+#topRight {
+    margin-top: 30px;
 }
 
 #clicker,
@@ -128,6 +141,9 @@ main {
 
 .miner {
     width: 100%;
+}
+.tier {
+    height: 95%;
 }
 
 #clickingContainer {

@@ -8,7 +8,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 
 let score = 0;
-let tier = 4;
+let tier = 0;
 let cpc = 1;
 let cps = 0;
 let upgrades = [];
@@ -21,17 +21,13 @@ var stop = false;
 var frameCount = 0;
 var fps, fpsInterval, startTime, now, then, elapsed;
 
+const save = setInterval(cookieSave, 60000);
+
 window.onload = function () {
     startAnimating(60);
     clicker.addEventListener("click", function () {
         score = score + cpc;
         scoreboard.innerHTML = Math.trunc(score);
-    });
-    window.addEventListener("keydown", function (e) {
-        if (e.keyCode == "40") {
-            score = score + cpc;
-            scoreboard.innerHTML = Math.trunc(score);
-        }
     });
 }
 
@@ -309,22 +305,64 @@ async function getTiers() {
 getTiers();
 
 function displayTier() {
-    /*tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
-    //clickingContainer.style.backgroundColor = tiers[tier].color;
-    
+    tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
+
+    const MAIN_DIV = document.createElement("div");
+    MAIN_DIV.classList.add("flex");
+    MAIN_DIV.classList.add("scroll");
+
+    const DIV1 = document.createElement("div");
+    DIV1.classList.add("split");
+    DIV1.classList.add("flex");
+    DIV1.classList.add("column");
+    DIV1.classList.add("center");
+
+    const TITLE_DIV = document.createElement("div");
+
     const CURRENT_TIER = document.createElement("h2");
     console.log(tiers[tier].name);
     textnode = document.createTextNode(`Current Tier: ${tiers[tier].name}`);
     CURRENT_TIER.appendChild(textnode);
-    tierContainer.appendChild(CURRENT_TIER);
+    TITLE_DIV.appendChild(CURRENT_TIER);
 
     const NEXT_TIER = document.createElement("h2");
     textnode = document.createTextNode(`Next Tier: ${tiers[tier + 1].name}`);
     NEXT_TIER.appendChild(textnode);
-    tierContainer.appendChild(NEXT_TIER);
+    TITLE_DIV.appendChild(NEXT_TIER);
+
+    DIV1.appendChild(TITLE_DIV);
+
+    const IMAGE_DIV = document.createElement("div");
+    IMAGE_DIV.classList.add("flex");
+    IMAGE_DIV.classList.add("center");
+
+    const IMAGE1 = document.createElement("img");
+    IMAGE1.classList.add("tierImage");
+    IMAGE1.src = tiers[tier].clickerImage;
+    IMAGE1.alt = tiers[tier].name;
+    IMAGE_DIV.appendChild(IMAGE1);
+    
+    const ARROW = document.createElement("i");
+    ARROW.classList.add("fa-solid");
+    ARROW.classList.add("fa-arrow-right");
+    IMAGE_DIV.appendChild(ARROW);
+
+    const IMAGE2 = document.createElement("img");
+    IMAGE2.classList.add("tierImage");
+    IMAGE2.src = tiers[tier + 1].clickerImage;
+    IMAGE2.alt = tiers[tier + 1].name;
+    IMAGE_DIV.appendChild(IMAGE2);
+
+    DIV1.appendChild(IMAGE_DIV);
+
+    const DIV2 = document.createElement("div");
+    DIV2.classList.add("split");
 
     const UPGRADE_DIV = document.createElement("div");
     UPGRADE_DIV.classList.add("tier");
+    UPGRADE_DIV.classList.add("flex");
+    UPGRADE_DIV.classList.add("column");
+    UPGRADE_DIV.classList.add("center");
     UPGRADE_DIV.setAttribute("onclick", "upgradeTier()");
 
     const UPGRADE_TEXT = document.createElement("h3");
@@ -332,12 +370,16 @@ function displayTier() {
     UPGRADE_TEXT.appendChild(textnode);
     UPGRADE_DIV.appendChild(UPGRADE_TEXT);
 
-    const UPGRADE_COST = document.createElement("p");
+    const UPGRADE_COST = document.createElement("h1");
     textnode = document.createTextNode(`$${abbrNum(tiers[tier].nextTier, 3)}`);
     UPGRADE_COST.appendChild(textnode);
     UPGRADE_DIV.appendChild(UPGRADE_COST);
 
-    tierContainer.appendChild(UPGRADE_DIV);*/
+    DIV2.appendChild(UPGRADE_DIV);
+
+    MAIN_DIV.appendChild(DIV1);
+    MAIN_DIV.appendChild(DIV2);
+    tierContainer.appendChild(MAIN_DIV); 
 }
 
 function upgradeTier() {
@@ -360,17 +402,30 @@ const abbrNum = (number, decPlaces) => {
     decPlaces = Math.pow(10, decPlaces);
     let abbrev = ['K', 'M', 'B', 'T', 'Q', 'Qi'];
     for (let i = abbrev.length - 1; i >= 0; i--) {
-      let size = Math.pow(10, (i + 1) * 3);
-      if (size <= number) {
-        number = Math.round((number * decPlaces) / size) / decPlaces;
-        if (number == 1000 && i < abbrev.length - 1) {
-          number = 1;
-          i++;
+        let size = Math.pow(10, (i + 1) * 3);
+        if (size <= number) {
+            number = Math.round((number * decPlaces) / size) / decPlaces;
+            if (number == 1000 && i < abbrev.length - 1) {
+                number = 1;
+                i++;
+            }
+            number += abbrev[i];
+            break;
         }
-        number += abbrev[i];
-        break;
-      }
     }
-  
+
     return number;
-  }
+}
+
+function cookieSave() {
+    //Convert Upgrades Bought into String
+    let upgradesBought;
+    for(let i = 0; i < upgrades.length; i++) {
+        if(upgrades[i].bought) {
+            upgradesBought += "1";
+        } else {
+            upgradesBought += "0";
+        }
+    }
+    console.log(upgradesBought);
+}
