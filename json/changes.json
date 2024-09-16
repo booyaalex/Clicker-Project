@@ -40,5 +40,14 @@
             "Added a temporary background image instead of a color.",
             "Made a box for the score, cps, and cpc."
         ]
+    },
+    {
+        "date":"16-9-24",
+        "title":"Who expected more UI changes!",
+        "bullets": [
+            "I made the sections on the page(Upgrades, Miners, Tiers) bubbles, or circles. My goal is to make them look like wood boards.",
+            "Made the background dark to look somewhat like a cave.",
+            "Added a Nav bar. It will be used to access settings, achievements, etc."
+        ]
     }
 ]

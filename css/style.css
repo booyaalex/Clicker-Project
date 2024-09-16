@@ -3,9 +3,24 @@
     font-family: pixellari;
 }
 
+body {
+    height: 100vh;
+    background-color: #343442;
+}
+
+nav {
+    background-color: #111116;
+    color: white;
+    height: 10vh;
+}
+
+main {
+    height: 90vh;
+}
+
 body,
 main {
-    height: 100vh;
+    overflow-y: hidden;
 }
 
 .center {
@@ -26,6 +41,9 @@ main {
 
 .flex.vertical-center {
     align-items: center;
+}
+.flex.vertical-end {
+    align-items: end;
 }
 
 .flex.between {
@@ -52,12 +70,39 @@ main {
 
 .flex.column>.flex.bigSec {
     width: 100%;
-    height: 70%;
+    height: 65%;
 }
 
 .flex.column>.flex.smallSec {
     width: 100%;
-    height: 30%;
+    height: 35%;
+}
+.scroll {
+    overflow-y: scroll;
+    height: 100%;
+}
+.container {
+    background-color: #411e08;
+    color: #e0c19b;
+    border: solid 4px #c98964;
+    border-radius: 10px;
+    width: 85%;
+    height: 85%;
+    position: relative;
+}
+.containerTitle {
+    position: absolute;
+    top: -45px;
+    background-color: #411e08;
+    border: solid 4px #c98964;
+    border-radius: 10px;
+    padding: 5px;
+    z-index: 2;
+}
+
+#logoImage {
+    width: 300px;
+    height: 100%;
 }
 
 #clicker,
@@ -70,18 +115,9 @@ main {
 .upgrade,
 .miner,
 .tier {
-    border: solid 2px black;
+    border: solid 2px #c98964;
+    border-radius: 10px;
     margin: 5px;
-}
-/*#upgradeContainer,
-#minerContainer,
-#tierContainer {
-    background-color: #411e08;
-}*/
-
-#upgradeContainer,
-#minerContainer {
-    overflow-y: scroll;
 }
 
 .upgradeImage,
@@ -96,21 +132,23 @@ main {
 
 #clickingContainer {
     position: relative;
-    background-image: url("https://art.ngfiles.com/images/1131000/1131823_vannzilla_pixel-art-cave-background.png?f1578086175");
+    background-image: url("https://i.redd.it/6axfm8uck3oy.png");
     background-size: cover;
     background-position: 0;
+    height: 100%;
 }
 
 #scoreContainer {
     background-color: #411e08;
+    color: #e0c19b;
+    border-radius: 10px;
     padding: 13px;
     position: relative;
     top: 5px;
     left: 5px;
-    color: #cbab85;
-    border-radius: 10px;
     width: 280px;
     z-index: 2;
+    margin: 0;
 }
 
 #scoreContainer:before {
@@ -126,16 +164,16 @@ main {
 }
 
 #clicker {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     background-color: black;
     animation-duration: 3s;
     animation-name: rotation;
     animation-iteration-count: infinite;
     transition-duration: 0.2s;
     position: absolute;
-    top: calc(50% - 105px);
-    left: calc(50% - 100px);
+    top: calc(50% - 130px);
+    left: calc(50% - 125px);
 }
 
 @keyframes rotation {
@@ -153,18 +191,28 @@ main {
 }
 
 @media only screen and (max-width: 768px) {
+
+    body,
+    main {
+        overflow-y: visible;
+    }
+
     .flex.bigSec,
     .flex.smallSec {
         width: 100%;
     }
 
-    #scoreContainer {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    #logoImage {
+        display: none;
+    }
+    #tierContainer {
+        width: 100%;
     }
 
     #clicker {
-        top: calc(65% - 105px);
+        top: calc(55% - 105px);
+        left: calc(50% - 100px);
+        width: 200px;
+        height: 200px;
     }
 }

@@ -12,28 +12,47 @@
 </head>
 
 <body>
+    <nav class="flex">
+        <img id="logoImage"
+            src="https://yt3.googleusercontent.com/LRIndGbTtvROYQJT_abmQcCQwrPJKGaaN-cmrnkawxfFHRRGIQZ_DcoB3Yo8feVt5p1atopn=s900-c-k-c0x00ffffff-no-rj"
+            alt="Currently Morgan Wallen">
+        <i class="fa-solid fa-gear"></i>
+    </nav>
     <main class="flex">
-        <div class="flex column bigSec">
-            <div id="clickingContainer" class="flex column bigSec">
-                <div id="scoreContainer">
-                    <h1 id="score">Crystals: 0</h1>
-                    <h2 id="cps">CPS: 0</h2>
-                    <h2 id="cpc">CPC: 1</h2>
+        <div class="flex column bigSec nowrap">
+            <div class="flex column bigSec">
+                <div id="clickingContainer">
+                    <div id="scoreContainer">
+                        <h1 id="score">Crystals: 0</h1>
+                        <h2 id="cps">CPS: 0</h2>
+                        <h2 id="cpc">CPC: 1</h2>
+                    </div>
+                    <div id="clicker" class="center"></div>
                 </div>
-                <div id="clicker" class="center"></div>
             </div>
-            <div id="tierContainer" class="flex smallSec">
-                <h2>Current Tier: Stone</h2>
-                <h2>Next Tier: Quartz</h2>
-                <div>
-                    <h3>Upgrade</h3>
-                    <p>$20000</p>
+            <div class="flex smallSec vertical-center center">
+                <div id="tierContainer" class="container">
+                    <div class="flex center">
+                        <div class="containerTitle">
+                            <h1>Tiers</h1>
+                        </div>
+                    </div>
+                    <h2>Current Tier: Stone</h2>
+                    <h2>Next Tier: Quartz</h2>
+                    <div class="tier">
+                        <h3>Upgrade</h3>
+                        <p>$20000</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex column smallSec">
-            <div id="upgradeContainer" class="flex column smallSec nowrap"></div>
-            <div id="minerContainer" class="flex column bigSec nowrap"></div>
+        <div class="flex column smallSec nowrap">
+            <div class="flex column smallSec nowrap vertical-center center">
+                <div id="upgradeContainer" class="container"></div>
+            </div>
+            <div class="flex column bigSec nowrap vertical-center center">
+                <div id="minerContainer" class="container"></div>
+            </div>
         </div>
     </main>
     <script src="js/script.js"></script>

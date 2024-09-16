@@ -8,7 +8,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 
 let score = 0;
-let tier = 0;
+let tier = 4;
 let cpc = 1;
 let cps = 0;
 let upgrades = [];
@@ -91,7 +91,9 @@ async function getUpgrades() {
 getUpgrades();
 
 function displayUpgrades() {
-    upgradeContainer.innerHTML = "";
+    upgradeContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Upgrades</h1></div></div>';
+    const MAIN_DIV = document.createElement("div");
+    MAIN_DIV.classList.add("scroll");
     for (let i = 0; i < upgrades.length; i++) {
         if (!upgrades[i].bought) {
             if (tier >= upgrades[i].tier) {
@@ -139,10 +141,11 @@ function displayUpgrades() {
 
                 DIV.appendChild(TOP_DIV);
                 DIV.appendChild(BOTTOM_DIV);
-                upgradeContainer.appendChild(DIV);
+                MAIN_DIV.appendChild(DIV);
             }
         }
     }
+    upgradeContainer.appendChild(MAIN_DIV);
     checkUpgrades();
 }
 
@@ -205,7 +208,9 @@ async function getMiners() {
 getMiners();
 
 function displayMiners() {
-    minerContainer.innerHTML = "";
+    minerContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Miners</h1></div></div>';
+    const SCROLL_DIV = document.createElement("div");
+    SCROLL_DIV.classList.add("scroll");
     for (let i = 0; i < miners.length; i++) {
         if (tier >= miners[i].tier) {
             const MAIN_DIV = document.createElement("div");
@@ -264,9 +269,10 @@ function displayMiners() {
             DIV.appendChild(TOP_DIV);
             DIV.appendChild(BOTTOM_DIV);
             MAIN_DIV.appendChild(DIV);
-            minerContainer.appendChild(MAIN_DIV);
+            SCROLL_DIV.appendChild(MAIN_DIV);
         }
     }
+    minerContainer.appendChild(SCROLL_DIV);
 }
 
 function buyMiner(a) {
@@ -303,7 +309,7 @@ async function getTiers() {
 getTiers();
 
 function displayTier() {
-    tierContainer.innerHTML = "";
+    /*tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
     //clickingContainer.style.backgroundColor = tiers[tier].color;
     
     const CURRENT_TIER = document.createElement("h2");
@@ -331,7 +337,7 @@ function displayTier() {
     UPGRADE_COST.appendChild(textnode);
     UPGRADE_DIV.appendChild(UPGRADE_COST);
 
-    tierContainer.appendChild(UPGRADE_DIV);
+    tierContainer.appendChild(UPGRADE_DIV);*/
 }
 
 function upgradeTier() {
