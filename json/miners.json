@@ -92,7 +92,7 @@
     "startingCost":35000000,
     "desc":"don't ask...",
     "img":null,
-    "amount":455,
+    "amount":450,
     "tier":4
   },
   {
@@ -100,7 +100,15 @@
     "startingCost":80000000,
     "desc":"There's plenty of them in District 12.",
     "img":null,
-    "amount":455,
+    "amount":475,
+    "tier":5
+  },
+  {
+    "name":"Steve",
+    "startingCost":120000000,
+    "desc":"Is that Steve from the hit game Minecraft!?",
+    "img":null,
+    "amount":500,
     "tier":5
   }
 ]

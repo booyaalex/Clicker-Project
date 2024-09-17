@@ -110,6 +110,17 @@
         "tier": 1
     },
     {
+        "name":"Blue_Ring",
+        "type": "cpc",
+        "altType": null,
+        "amount": 1.9,
+        "desc": "It's supposed to give 2x strength, but it seems a bit short.",
+        "img": null,
+        "price": 125000,
+        "bought": false,
+        "tier": 5
+    },
+    {
         "name":"Copper_Pickaxe",
         "type": "cpc",
         "altType": null,
@@ -191,7 +202,7 @@
         "type": "cpc",
         "altType": null,
         "amount": 2.75,
-        "desc": "WOOOOOOOOOOOOOOO!",
+        "desc": "Slash those rocks up!",
         "img": null,
         "price": 7500000,
         "bought": false,
@@ -200,13 +211,35 @@
     {
         "name":"Mrs._Candy",
         "type": "cps",
-        "altType": null,
+        "altType": 1,
         "amount": 1.85,
         "desc": "Candy? Is this forshadowing?",
         "img": null,
         "price": 15000000,
         "bought": false,
         "tier": 4
+    },
+    {
+        "name":"Handheld Drill",
+        "type": "cpc",
+        "altType": null,
+        "amount": 2.35,
+        "desc": "It's a bit better than a pickaxe, not by much.",
+        "img": null,
+        "price": 35000000,
+        "bought": false,
+        "tier": 5
+    },
+    {
+        "name":"LED Flashlight",
+        "type": "cpc",
+        "altType": null,
+        "amount": 2.35,
+        "desc": "It's slightly brighter.",
+        "img": null,
+        "price": 100000000,
+        "bought": false,
+        "tier": 5
     }
 ]
 

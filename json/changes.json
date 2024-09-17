@@ -51,5 +51,17 @@
             "Changed the UI in the tier section to look better.",
             "Morgan Wallen is the temporary logo for the game."
         ]
+    },
+    {
+        "date":"17-9-24",
+        "title":"Saving and Change Log",
+        "bullets": [
+            "Added a save system that uses cookies to save your progress every 30 seconds.",
+            "Loads your most recent save upon reload.",
+            "You can save and load to and from text files.",
+            "When the game autosaves, a bubble pops up at the top of the screen.",
+            "Added a place to see the change log on the website itself.",
+            "Worked on adding content to Aquamarine Tier."
+        ]
     }
 ]

@@ -17,7 +17,8 @@ let upgrades = [];
 let miners = [];
 let minersPurchased = [];
 let tiers = [];
-let textnode;
+let textnode,
+minerScrollTop = 0;
 
 var stop = false;
 var frameCount = 0;
@@ -208,8 +209,11 @@ async function getMiners() {
 getMiners();
 
 function displayMiners() {
+    minerScrollTop = $("#minerScroll").scrollTop();
+    console.log(minerScrollTop);
     minerContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Miners</h1></div></div>';
     const SCROLL_DIV = document.createElement("div");
+    SCROLL_DIV.id = "minerScroll";
     SCROLL_DIV.classList.add("scroll");
     for (let i = 0; i < miners.length; i++) {
         if (tier >= miners[i].tier) {
@@ -273,6 +277,7 @@ function displayMiners() {
         }
     }
     minerContainer.appendChild(SCROLL_DIV);
+    $("#minerScroll").scrollTop(minerScrollTop);
 }
 
 function buyMiner(a) {
@@ -527,17 +532,25 @@ function showPopupPage(page) {
     pagePopup.innerHTML = '<i id="close" class="icon fa-solid fa-circle-xmark" onclick="hidePopupPage()"></i>';
     if (page == "settings") {
         settingsPopup();
+    } else if (page == "changes") {
+        changesPopup();
     }
 }
 
 function settingsPopup() {
-    pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2>';
+    pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2><br>';
+
+    pagePopup.innerHTML += '<h3>Save to File</h3>';
 
     const SAVE_BUTTON = document.createElement("button");
     SAVE_BUTTON.type = "button";
     SAVE_BUTTON.setAttribute("onclick", "downloadSaveFile()");
     textnode = document.createTextNode("Save To File");
+    SAVE_BUTTON.appendChild(textnode);
     pagePopup.appendChild(SAVE_BUTTON);
+
+    pagePopup.innerHTML += '<br><br>';
+    pagePopup.innerHTML += '<h3>Load from File</h3>';
 
     const LOAD_BUTTON = document.createElement("input");
     LOAD_BUTTON.type = "file";
@@ -547,6 +560,16 @@ function settingsPopup() {
         readSaveFile(file);
     });
     pagePopup.appendChild(LOAD_BUTTON);
+
+    pagePopup.innerHTML += '<br><br>';
+    pagePopup.innerHTML += '<h3>Reset Save File</h3>';
+
+    const RESET_BUTTON = document.createElement("button");
+    RESET_BUTTON.type = "button";
+    RESET_BUTTON.setAttribute("onclick", "resetSave()");
+    textnode = document.createTextNode("Reset Save");
+    RESET_BUTTON.appendChild(textnode);
+    pagePopup.appendChild(RESET_BUTTON);
 }
 
 function downloadSaveFile() {
@@ -598,6 +621,43 @@ function readSaveFile(file) {
         window.location.reload(true);
     };
     reader.readAsText(file);
+}
+
+function resetSave() {
+    if (confirm("This will reset all of your progress, do you want to continue?")) {
+        document.cookie = `saveFile=blank;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        window.location.reload(true);
+    }
+}
+
+async function changesPopup() {
+    const response = await fetch("json/changes.json");
+    const JSON = await response.json();
+    console.log(JSON);
+
+    pagePopup.innerHTML += '<h1 class="center">Change Log</h1><br><br>';
+    for(let i = 0; i < JSON.length; i++) {
+        const DATE = document.createElement("h2");
+        textnode = document.createTextNode(JSON[i].date);
+        DATE.appendChild(textnode);
+        pagePopup.appendChild(DATE);
+
+        const TITLE = document.createElement("h3");
+        textnode = document.createTextNode(JSON[i].title);
+        TITLE.appendChild(textnode);
+        pagePopup.appendChild(TITLE);
+
+        const LIST = document.createElement("ul");
+        for(let j = 0; j < JSON[i].bullets.length; j++) {
+            const BULLET = document.createElement("li");
+            textnode = document.createTextNode(JSON[i].bullets[j]);
+            BULLET.appendChild(textnode);
+            LIST.appendChild(BULLET);
+        }
+        pagePopup.appendChild(LIST);
+
+        pagePopup.innerHTML += '<br><br>';
+    }
 }
 
 function hidePopupPage() {

@@ -53,10 +53,10 @@
     "name":"Aquamarine",
     "desc":"The emerald ripoff.",
     "multiplier":7.25,
-    "clickingBonus":70,
+    "clickingBonus":100,
     "color":null,
     "altColor":null,
-    "nextTier":null,
+    "nextTier":2000000000,
     "clickerImage": null
   },
   {

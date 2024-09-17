@@ -144,6 +144,10 @@ main {
     color: white;
 }
 
+.icon {
+    margin: 5px;
+}
+
 #close, nav {
     font-size: 40px;
 }
