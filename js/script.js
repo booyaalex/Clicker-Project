@@ -6,6 +6,8 @@ const clickingContainer = document.getElementById("clickingContainer");
 const upgradeContainer = document.getElementById("upgradeContainer");
 const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
+const savePopup = document.getElementById("savePopup");
+const pagePopup = document.getElementById("pagePopup");
 
 let score = 0;
 let tier = 0;
@@ -21,9 +23,10 @@ var stop = false;
 var frameCount = 0;
 var fps, fpsInterval, startTime, now, then, elapsed;
 
-const save = setInterval(cookieSave, 60000);
+const save = setInterval(cookieSave, 30000);
 
 window.onload = function () {
+    setTimeout(loadSave, 200);
     startAnimating(60);
     clicker.addEventListener("click", function () {
         score = score + cpc;
@@ -85,6 +88,7 @@ async function getUpgrades() {
     console.log(upgrades);
 }
 getUpgrades();
+
 
 function displayUpgrades() {
     upgradeContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Upgrades</h1></div></div>';
@@ -341,7 +345,7 @@ function displayTier() {
     IMAGE1.src = tiers[tier].clickerImage;
     IMAGE1.alt = tiers[tier].name;
     IMAGE_DIV.appendChild(IMAGE1);
-    
+
     const ARROW = document.createElement("i");
     ARROW.classList.add("fa-solid");
     ARROW.classList.add("fa-arrow-right");
@@ -379,7 +383,7 @@ function displayTier() {
 
     MAIN_DIV.appendChild(DIV1);
     MAIN_DIV.appendChild(DIV2);
-    tierContainer.appendChild(MAIN_DIV); 
+    tierContainer.appendChild(MAIN_DIV);
 }
 
 function upgradeTier() {
@@ -418,14 +422,186 @@ const abbrNum = (number, decPlaces) => {
 }
 
 function cookieSave() {
+    //§, α
     //Convert Upgrades Bought into String
-    let upgradesBought;
-    for(let i = 0; i < upgrades.length; i++) {
-        if(upgrades[i].bought) {
+    let upgradesBought = "";
+    for (let i = 0; i < upgrades.length; i++) {
+        if (upgrades[i].bought) {
             upgradesBought += "1";
         } else {
             upgradesBought += "0";
         }
     }
     console.log(upgradesBought);
+
+    //Convert Miners Purchased into String
+    const minerArray = [];
+    for (let i = 0; i < miners.length; i++) {
+        minerArray.push(minersPurchased[i]);
+        minerArray.push("α");
+    }
+    let temp = minerArray.toString();
+    temp = temp.replaceAll(",", "");
+    console.log(temp);
+
+    //Final Save
+    const d = new Date();
+    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+    console.log(save);
+    document.cookie = `saveFile=${save};${expires};path=/`;
+    showSavePopup();
 }
+
+function loadSaveFile() {
+    let name = "saveFile=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+function loadSave() {
+    const saveArray = loadSaveFile().split("§");
+    console.log(saveArray);
+
+    //Set Score
+    score = Number(saveArray[0]);
+
+    //Set Tier
+    if (Number(saveArray[3]) > 0) {
+        tier = Number(saveArray[3]);
+    } else {
+        tier = 0;
+    }
+    displayTier();
+
+    //Set Upgrades
+    for (let i = 0; i < upgrades.length; i++) {
+        if (saveArray[1].charAt(i) != null) {
+            if (saveArray[1].charAt(i) == 0) {
+                upgrades[i].bought = false;
+            } else if (saveArray[1].charAt(i) == 1) {
+                upgrades[i].bought = true;
+            }
+        }
+    }
+    displayUpgrades();
+
+    //Set Miners
+    const minerArray = saveArray[2].split("α");
+    for (let i = 0; i < miners.length; i++) {
+        if (Number(minerArray[i]) != null) {
+            minersPurchased[i] = Number(minerArray[i]);
+            if (Number(minerArray[i]) != 0) {
+                console.log(`${i}: ${miners[i].price}`);
+                for (let a = 0; a < Number(minerArray[i]); a++) {
+                    miners[i].price = Math.ceil(miners[i].price * 1.15 ^ a + 1);
+                    console.log(`${i}: ${miners[i].price}`);
+                }
+            }
+        }
+    }
+    displayMiners();
+    checkUpgrades();
+}
+
+function showSavePopup() {
+    savePopup.style.display = "flex";
+    setTimeout(() => {
+        savePopup.style.display = "none";
+    }, 5000);
+}
+
+function showPopupPage(page) {
+    pagePopup.style.display = "block";
+    pagePopup.innerHTML = '<i id="close" class="icon fa-solid fa-circle-xmark" onclick="hidePopupPage()"></i>';
+    if (page == "settings") {
+        settingsPopup();
+    }
+}
+
+function settingsPopup() {
+    pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2>';
+
+    const SAVE_BUTTON = document.createElement("button");
+    SAVE_BUTTON.type = "button";
+    SAVE_BUTTON.setAttribute("onclick", "downloadSaveFile()");
+    textnode = document.createTextNode("Save To File");
+    pagePopup.appendChild(SAVE_BUTTON);
+
+    const LOAD_BUTTON = document.createElement("input");
+    LOAD_BUTTON.type = "file";
+    LOAD_BUTTON.id = "loadSave";
+    LOAD_BUTTON.addEventListener("change", () => {
+        const file = LOAD_BUTTON.files[0];
+        readSaveFile(file);
+    });
+    pagePopup.appendChild(LOAD_BUTTON);
+}
+
+function downloadSaveFile() {
+    let upgradesBought = "";
+    for (let i = 0; i < upgrades.length; i++) {
+        if (upgrades[i].bought) {
+            upgradesBought += "1";
+        } else {
+            upgradesBought += "0";
+        }
+    }
+    console.log(upgradesBought);
+
+    //Convert Miners Purchased into String
+    const minerArray = [];
+    for (let i = 0; i < miners.length; i++) {
+        minerArray.push(minersPurchased[i]);
+        minerArray.push("α");
+    }
+    let temp = minerArray.toString();
+    temp = temp.replaceAll(",", "");
+    console.log(temp);
+
+    //Final Save
+    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+    console.log(save);
+    const file = new File([save], 'crystal_save.txt', {
+        type: 'text/plain',
+    });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(file);
+
+    link.href = url;
+    link.download = file.name;
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+}
+
+function readSaveFile(file) {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = `saveFile=${evt.target.result};${expires};path=/`;
+        window.location.reload(true);
+    };
+    reader.readAsText(file);
+}
+
+function hidePopupPage() {
+    pagePopup.style.display = "none";
+    pagePopup.innerHTML = "";
+}
+

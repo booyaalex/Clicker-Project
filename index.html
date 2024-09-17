@@ -12,13 +12,19 @@
 </head>
 
 <body>
-    <nav class="flex">
+    <nav class="flex vertical-center">
         <img id="logoImage"
             src="https://yt3.googleusercontent.com/LRIndGbTtvROYQJT_abmQcCQwrPJKGaaN-cmrnkawxfFHRRGIQZ_DcoB3Yo8feVt5p1atopn=s900-c-k-c0x00ffffff-no-rj"
             alt="Currently Morgan Wallen">
-        <i class="fa-solid fa-gear"></i>
+        <i id="settings" class="icon fa-solid fa-gear" onclick="showPopupPage(this.id)"></i>
     </nav>
     <main class="flex">
+        <div id="savePopup" class="flex center vertical-center">
+            <h2>Saved</h2>
+        </div>
+        <div id="pagePopup">
+            <i id="close" class="icon fa-solid fa-circle-xmark" onclick="hidePopupPage()"></i>
+        </div>
         <div class="flex column bigSec nowrap">
             <div class="flex column bigSec">
                 <div id="clickingContainer">
@@ -70,6 +76,8 @@
         </div>
     </main>
     <script src="js/script.js"></script>
+    <script>
+    </script>
 </body>
 
 </html>

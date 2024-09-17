@@ -118,10 +118,47 @@ main {
     margin-top: 30px;
 }
 
+#savePopup {
+    position: absolute;
+    top: 10px;
+    left: calc(50vw - 45px);
+    width: 90px;
+    height: 40px;
+    background-color: #411e08;
+    border: solid 4px #c98964;
+    border-radius: 10px;
+    color: #e0c19b;
+    display: none;
+}
+
+#pagePopup {
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: #343442;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    color: white;
+}
+
+#close, nav {
+    font-size: 40px;
+}
+
+#close {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
 #clicker,
 .upgrade,
 .miner,
-.tier {
+.tier,
+.icon {
     cursor: pointer;
 }
 
