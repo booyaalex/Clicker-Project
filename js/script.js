@@ -17,6 +17,7 @@ let upgrades = [];
 let miners = [];
 let minersPurchased = [];
 let tiers = [];
+let achievements = [];
 let textnode,
     minerScrollTop = 0;
 
@@ -24,17 +25,17 @@ let textnode,
 let cookieToggle = cookieToggleCheck();
 function cookieToggleCheck() {
     let name = "cookieToggle=";
-let ca = document.cookie.split(';');
-for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-        c = c.substring(1);
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return (c.substring(name.length, c.length) == 'true');
+        }
     }
-    if (c.indexOf(name) == 0) {
-        return (c.substring(name.length, c.length) == 'true');
-    }
-}
-return true;
+    return true;
 }
 
 var stop = false;
@@ -132,6 +133,7 @@ function displayUpgrades() {
     upgradeContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Upgrades</h1></div></div>';
     const MAIN_DIV = document.createElement("div");
     MAIN_DIV.classList.add("scroll");
+    MAIN_DIV.classList.add("fullHeight");
     for (let i = 0; i < upgrades.length; i++) {
         if (!upgrades[i].bought) {
             if (tier >= upgrades[i].tier) {
@@ -253,6 +255,7 @@ function displayMiners() {
     const SCROLL_DIV = document.createElement("div");
     SCROLL_DIV.id = "minerScroll";
     SCROLL_DIV.classList.add("scroll");
+    SCROLL_DIV.classList.add("fullHeight");
     for (let i = 0; i < miners.length; i++) {
         if (tier >= miners[i].tier) {
             const MAIN_DIV = document.createElement("div");
@@ -334,7 +337,7 @@ function displayTier() {
 
     const MAIN_DIV = document.createElement("div");
     MAIN_DIV.classList.add("flex");
-    MAIN_DIV.classList.add("scroll");
+    MAIN_DIV.classList.add("fullHeight");
 
     const DIV1 = document.createElement("div");
     DIV1.classList.add("split");
@@ -559,18 +562,9 @@ function showPopupPage(page) {
 
 function settingsPopup() {
     pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2><br>';
-
     pagePopup.innerHTML += '<h3>Save to File</h3>';
-
-    const SAVE_BUTTON = document.createElement("button");
-    SAVE_BUTTON.type = "button";
-    SAVE_BUTTON.setAttribute("onclick", "downloadSaveFile()");
-    textnode = document.createTextNode("Save To File");
-    SAVE_BUTTON.appendChild(textnode);
-    pagePopup.appendChild(SAVE_BUTTON);
-
-    pagePopup.innerHTML += '<br><br>';
-    pagePopup.innerHTML += '<h3>Load from File</h3>';
+    pagePopup.innerHTML += '<button type="button" onclick="downloadSaveFile()">Save To File</button>';
+    pagePopup.innerHTML += '<br><br><h3>Load from File</h3>';
 
     const LOAD_BUTTON = document.createElement("input");
     LOAD_BUTTON.type = "file";
@@ -581,20 +575,16 @@ function settingsPopup() {
     pagePopup.innerHTML += '<br><br>';
     pagePopup.innerHTML += '<h3>Reset Save File</h3>';
 
-    const RESET_BUTTON = document.createElement("button");
-    RESET_BUTTON.type = "button";
-    RESET_BUTTON.setAttribute("onclick", "resetSave()");
-    textnode = document.createTextNode("Reset Save");
-    RESET_BUTTON.appendChild(textnode);
-    pagePopup.appendChild(RESET_BUTTON);
+
+    pagePopup.innerHTML += '<button type="button" onclick="resetSave()">Reset Save</button>';
 
     pagePopup.innerHTML += '<br><br><h3>Disable Cookies</h3><h4>This will also disable autosaving, and delete your current autosave.</h4>';
-    if(cookieToggle) {
+    if (cookieToggle) {
         pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox">';
-    } else if(!cookieToggle) {
+    } else if (!cookieToggle) {
         pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox" checked>';
     }
-    
+
     document.getElementById("toggleCookies").addEventListener("change", () => {
         if (document.getElementById("toggleCookies").checked) {
             cookieToggle = false;
@@ -705,8 +695,99 @@ async function changesPopup() {
     }
 }
 
-function achievementsPopup() {
+async function achievementsPopup() {
+    const response = await fetch("json/achievements.json");
+    const JSON = await response.json();
+    console.log(JSON);
+    achievements = [];
+    for (let i = 0; i < JSON.length; i++) {
+        const achievement = {
+            name: JSON[i].name,
+            desc: JSON[i].desc,
+            type: JSON[i].type,
+            requirement: JSON[i].requirement,
+            img: JSON[i].img,
+            unlocked: JSON[i].unlocked
+        };
+        achievements.push(achievement);
+    }
+
     pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
+
+    const MAIN_DIV = document.createElement("div");
+    MAIN_DIV.classList.add("flex");
+    MAIN_DIV.classList.add("column");
+    MAIN_DIV.classList.add("fullHeight");
+
+
+    const LIST = document.createElement("div");
+    LIST.classList.add("flex");
+    LIST.classList.add("bigSec");
+
+    const CONTAINER = document.createElement("div");
+    CONTAINER.id = "achievementContainer";
+    CONTAINER.classList.add("fullHeight");
+
+    for (let i = 0; i < achievements.length; i++) {
+        const DIV = document.createElement("div");
+        DIV.id = i;
+        DIV.classList.add("achievement");
+        DIV.classList.add("flex");
+        DIV.classList.add("vertical-center");
+        DIV.classList.add("center");
+        if (!achievements[i].unlocked) {
+            DIV.classList.add("locked");
+            const LOCK = document.createElement("i");
+            LOCK.classList.add("fa-lock");
+            LOCK.classList.add("fa-solid");
+
+            DIV.appendChild(LOCK);
+        } else if (achievements[i].unlocked) {
+            DIV.setAttribute("onclick", "updateAchievementInfo(this.id)");
+            const IMG = document.createElement("img");
+            IMG.src = achievements[i].img;
+            IMG.alt = achievements[i].name;
+            DIV.appendChild(IMG);
+        }
+        CONTAINER.appendChild(DIV);
+    }
+    LIST.appendChild(CONTAINER);
+    MAIN_DIV.appendChild(LIST);
+
+    const INFO = document.createElement("div");
+    INFO.id = "achievementInfo";
+    INFO.classList.add("flex");
+    INFO.classList.add("smallSec");
+    INFO.classList.add("column");
+    MAIN_DIV.appendChild(INFO);
+
+    pagePopup.appendChild(MAIN_DIV);
+}
+
+function updateAchievementInfo(id) {
+    const MAIN_DIV = document.getElementById("achievementInfo");
+    const TOP_DIV = document.createElement("div");
+    TOP_DIV.classList.add("flex");
+    TOP_DIV.classList.add("vertical-center");
+
+    const IMG = document.createElement("img");
+    IMG.src = achievements[id].img;
+    IMG.alt = achievements[id].name;
+    TOP_DIV.appendChild(IMG);
+
+    const H1 = document.createElement("h1");
+    let temp = document.createTextNode(achievements[id].name);
+    H1.appendChild(temp);
+    TOP_DIV.appendChild(H1);
+
+    const BOTTOM_DIV = document.createElement("div");
+    const H2 = document.createElement("h2");
+    temp = document.createTextNode(achievements[id].desc);
+    H2.appendChild(temp);
+    BOTTOM_DIV.appendChild(H2);
+    
+    MAIN_DIV.appendChild(TOP_DIV);
+    MAIN_DIV.appendChild(BOTTOM_DIV);
 }
 
 function hidePopupPage() {

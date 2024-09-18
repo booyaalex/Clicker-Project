@@ -1,0 +1,26 @@
+[
+    {
+        "name":"The Journey Begins",
+        "desc":"Get your first crystal!",
+        "type":0,
+        "requirement": 1,
+        "img":"https://img.freepik.com/premium-vector/lightning-pixel-art-gaming-item-game-pixel-lightning_158677-585.jpg",
+        "unlocked":true
+    },
+    {
+        "name":"Keep_It_Up",
+        "desc":"Get 100 crystals!",
+        "type":0,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep_It_Up",
+        "desc":"Get 100 crystals!",
+        "type":0,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    }
+]
