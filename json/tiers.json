@@ -4,38 +4,30 @@
     "desc":"Where are the crystals!? This game is a rip off!",
     "multiplier":1,
     "clickingBonus":0,
-    "color":"#c9bab3",
-    "altColor":"#968b86",
     "nextTier":20000,
-    "clickerImage": null
+    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
   },
   {
     "name":"Quartz",
     "desc":"Where are the crystals!? This game is a rip off!",
     "multiplier":1.5,
     "clickingBonus":3,
-    "color":"#efebff",
-    "altColor":"#c6c3d4",
     "nextTier":200000,
-    "clickerImage": null
+    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
   },
   {
     "name":"Copper",
     "desc":"Does this really count as a crystal?",
     "multiplier":2.25,
     "clickingBonus":9,
-    "color":"#ad522b",
-    "altColor":"#2c916c",
     "nextTier":2000000,
-    "clickerImage": null
+    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
   },
   {
     "name":"Amethyst",
     "desc":"FINALLY! A CRYSTAL!",
     "multiplier":4,
     "clickingBonus":20,
-    "color":null,
-    "altColor":null,
     "nextTier":25000000,
     "clickerImage": null
   },
@@ -44,8 +36,6 @@
     "desc":"mmmmmmm... yellow.",
     "multiplier":5.75,
     "clickingBonus":45,
-    "color":null,
-    "altColor":null,
     "nextTier":115000000,
     "clickerImage": null
   },
@@ -54,59 +44,23 @@
     "desc":"The emerald ripoff.",
     "multiplier":7.25,
     "clickingBonus":100,
-    "color":null,
-    "altColor":null,
-    "nextTier":2000000000,
-    "clickerImage": null
-  },
-  {
-    "name":"Unnamed Crimson Crystal",
-    "desc":"Even I don't know what it is. At least it's a crystal.",
-    "multiplier":null,
-    "clickingBonus":null,
-    "color":null,
-    "altColor":null,
-    "nextTier":null,
+    "nextTier":1500000000,
     "clickerImage": null
   },
   {
     "name":"Saphirre",
     "desc":"Ooh, shiny blue!",
-    "multiplier":null,
-    "clickingBonus":null,
-    "color":null,
-    "altColor":null,
-    "nextTier":null,
+    "multiplier":10,
+    "clickingBonus":130,
+    "nextTier":9999999999999999999999,
     "clickerImage": null
   },
   {
-    "name":"Candy?",
-    "desc":"What do you mean candy?",
+    "name":"NONE",
+    "desc":"Thanks for playing! I'll add more tiers at some point. Trust me.",
     "multiplier":null,
     "clickingBonus":null,
-    "color":null,
-    "altColor":null,
-    "nextTier":null,
-    "clickerImage": null
-  },
-  {
-    "name":"Ruby",
-    "desc":"It's red, is that good enough for you?",
-    "multiplier":null,
-    "clickingBonus":null,
-    "color":null,
-    "altColor":null,
-    "nextTier":null,
-    "clickerImage": null
-  },
-  {
-    "name":"Diamond",
-    "desc":"We can make a good pickaxe with this stuff!",
-    "multiplier":null,
-    "clickingBonus":null,
-    "color":null,
-    "altColor":null,
-    "nextTier":null,
+    "nextTier":99999999999999,
     "clickerImage": null
   }
 ]

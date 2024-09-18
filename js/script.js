@@ -18,7 +18,24 @@ let miners = [];
 let minersPurchased = [];
 let tiers = [];
 let textnode,
-minerScrollTop = 0;
+    minerScrollTop = 0;
+
+
+let cookieToggle = cookieToggleCheck();
+function cookieToggleCheck() {
+    let name = "cookieToggle=";
+let ca = document.cookie.split(';');
+for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+        return (c.substring(name.length, c.length) == 'true');
+    }
+}
+return true;
+}
 
 var stop = false;
 var frameCount = 0;
@@ -66,6 +83,27 @@ function animate() {
     }
 }
 
+async function getTiers() {
+    const response = await fetch("json/tiers.json");
+    const JSON = await response.json();
+    console.log(JSON);
+    tiers = [];
+    for (let i = 0; i < JSON.length; i++) {
+        const tier = {
+            name: JSON[i].name,
+            desc: JSON[i].desc,
+            multiplier: JSON[i].multiplier,
+            clickingBonus: JSON[i].clickingBonus,
+            nextTier: JSON[i].nextTier,
+            clickerImage: JSON[i].clickerImage
+        };
+        tiers.push(tier);
+    }
+    displayTier();
+    checkUpgrades();
+}
+getTiers();
+
 async function getUpgrades() {
     const response = await fetch("json/upgrades.json");
     const JSON = await response.json();
@@ -89,7 +127,6 @@ async function getUpgrades() {
     console.log(upgrades);
 }
 getUpgrades();
-
 
 function displayUpgrades() {
     upgradeContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Upgrades</h1></div></div>';
@@ -179,6 +216,7 @@ function checkUpgrades() {
             }
         }
     }
+    console.log(tiers[tier].clickingBonus);
     temp_cpc += tiers[tier].clickingBonus;
     temp_cps *= tiers[tier].multiplier;
     cpc = temp_cpc;
@@ -290,28 +328,6 @@ function buyMiner(a) {
         checkUpgrades();
     }
 }
-
-async function getTiers() {
-    const response = await fetch("json/tiers.json");
-    const JSON = await response.json();
-    console.log(JSON);
-    tiers = [];
-    for (let i = 0; i < JSON.length; i++) {
-        const tier = {
-            name: JSON[i].name,
-            desc: JSON[i].desc,
-            multiplier: JSON[i].multiplier,
-            clickingBonus: JSON[i].clickingBonus,
-            color: JSON[i].color,
-            altColor: JSON[i].altColor,
-            nextTier: JSON[i].nextTier
-        };
-        tiers.push(tier);
-    }
-    displayTier();
-    checkUpgrades();
-}
-getTiers();
 
 function displayTier() {
     tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
@@ -427,36 +443,38 @@ const abbrNum = (number, decPlaces) => {
 }
 
 function cookieSave() {
-    //§, α
-    //Convert Upgrades Bought into String
-    let upgradesBought = "";
-    for (let i = 0; i < upgrades.length; i++) {
-        if (upgrades[i].bought) {
-            upgradesBought += "1";
-        } else {
-            upgradesBought += "0";
+    if (cookieToggle) {
+        //§, α
+        //Convert Upgrades Bought into String
+        let upgradesBought = "";
+        for (let i = 0; i < upgrades.length; i++) {
+            if (upgrades[i].bought) {
+                upgradesBought += "1";
+            } else {
+                upgradesBought += "0";
+            }
         }
-    }
-    console.log(upgradesBought);
+        console.log(upgradesBought);
 
-    //Convert Miners Purchased into String
-    const minerArray = [];
-    for (let i = 0; i < miners.length; i++) {
-        minerArray.push(minersPurchased[i]);
-        minerArray.push("α");
-    }
-    let temp = minerArray.toString();
-    temp = temp.replaceAll(",", "");
-    console.log(temp);
+        //Convert Miners Purchased into String
+        const minerArray = [];
+        for (let i = 0; i < miners.length; i++) {
+            minerArray.push(minersPurchased[i]);
+            minerArray.push("α");
+        }
+        let temp = minerArray.toString();
+        temp = temp.replaceAll(",", "");
+        console.log(temp);
 
-    //Final Save
-    const d = new Date();
-    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
-    console.log(save);
-    document.cookie = `saveFile=${save};${expires};path=/`;
-    showSavePopup();
+        //Final Save
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+        console.log(save);
+        document.cookie = `saveFile=${save};${expires};path=/`;
+        showSavePopup();
+    }
 }
 
 function loadSaveFile() {
@@ -511,7 +529,6 @@ function loadSave() {
                 console.log(`${i}: ${miners[i].price}`);
                 for (let a = 0; a < Number(minerArray[i]); a++) {
                     miners[i].price = Math.ceil(miners[i].price * 1.15 ^ a + 1);
-                    console.log(`${i}: ${miners[i].price}`);
                 }
             }
         }
@@ -530,10 +547,13 @@ function showSavePopup() {
 function showPopupPage(page) {
     pagePopup.style.display = "block";
     pagePopup.innerHTML = '<i id="close" class="icon fa-solid fa-circle-xmark" onclick="hidePopupPage()"></i>';
+    document.body.style.overflowY = "hidden";
     if (page == "settings") {
         settingsPopup();
     } else if (page == "changes") {
         changesPopup();
+    } else if (page == "achievements") {
+        achievementsPopup();
     }
 }
 
@@ -555,10 +575,7 @@ function settingsPopup() {
     const LOAD_BUTTON = document.createElement("input");
     LOAD_BUTTON.type = "file";
     LOAD_BUTTON.id = "loadSave";
-    LOAD_BUTTON.addEventListener("change", () => {
-        const file = LOAD_BUTTON.files[0];
-        readSaveFile(file);
-    });
+    LOAD_BUTTON.setAttribute("onChange", 'const file = this.files[0]; readSaveFile(file);');
     pagePopup.appendChild(LOAD_BUTTON);
 
     pagePopup.innerHTML += '<br><br>';
@@ -570,6 +587,34 @@ function settingsPopup() {
     textnode = document.createTextNode("Reset Save");
     RESET_BUTTON.appendChild(textnode);
     pagePopup.appendChild(RESET_BUTTON);
+
+    pagePopup.innerHTML += '<br><br><h3>Disable Cookies</h3><h4>This will also disable autosaving, and delete your current autosave.</h4>';
+    if(cookieToggle) {
+        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox">';
+    } else if(!cookieToggle) {
+        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox" checked>';
+    }
+    
+    document.getElementById("toggleCookies").addEventListener("change", () => {
+        if (document.getElementById("toggleCookies").checked) {
+            cookieToggle = false;
+
+            document.cookie = "saveFile=blank;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            const d = new Date();
+            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+        } else if (!document.getElementById("toggleCookies").checked) {
+            cookieToggle = true;
+
+            const d = new Date();
+            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+        }
+    });
+    pagePopup.innerHTML += '<br><br><h3>Privacy Policy</h3><a href="privacyPolicy.html" target="_blank">Privacy Policy</a>';
 }
 
 function downloadSaveFile() {
@@ -636,7 +681,7 @@ async function changesPopup() {
     console.log(JSON);
 
     pagePopup.innerHTML += '<h1 class="center">Change Log</h1><br><br>';
-    for(let i = 0; i < JSON.length; i++) {
+    for (let i = 0; i < JSON.length; i++) {
         const DATE = document.createElement("h2");
         textnode = document.createTextNode(JSON[i].date);
         DATE.appendChild(textnode);
@@ -648,7 +693,7 @@ async function changesPopup() {
         pagePopup.appendChild(TITLE);
 
         const LIST = document.createElement("ul");
-        for(let j = 0; j < JSON[i].bullets.length; j++) {
+        for (let j = 0; j < JSON[i].bullets.length; j++) {
             const BULLET = document.createElement("li");
             textnode = document.createTextNode(JSON[i].bullets[j]);
             BULLET.appendChild(textnode);
@@ -658,6 +703,10 @@ async function changesPopup() {
 
         pagePopup.innerHTML += '<br><br>';
     }
+}
+
+function achievementsPopup() {
+    pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
 }
 
 function hidePopupPage() {

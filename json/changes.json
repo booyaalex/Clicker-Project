@@ -63,5 +63,15 @@
             "Added a place to see the change log on the website itself.",
             "Worked on adding content to Aquamarine Tier."
         ]
+    },
+    {
+        "date":"18-9-24",
+        "title":"Privacy Policy",
+        "bullets": [
+            "Added a privacy policy so I don't get destroyed by the law.",
+            "Fixed a bug with loading save files from your device.",
+            "Added a temporary favicon of Cody Johnson.",
+            "The current final tier is Sapphire, which I'll change at some point."
+        ]
     }
 ]

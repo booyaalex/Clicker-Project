@@ -3,7 +3,7 @@
     "name":"Starter_Miner",
     "startingCost":100,
     "desc":"All good quarries start somewhere.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":1,
     "tier":0
   },
@@ -11,7 +11,7 @@
     "name":"Simple_Miner",
     "startingCost":1300,
     "desc":"These guys are the cream of the crop!",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":8,
     "tier":0
   },
@@ -19,7 +19,7 @@
     "name":"Old_Miners",
     "startingCost":4500,
     "desc":"They supprisingly have good mining techniques!",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":14,
     "tier":3
   },
@@ -27,7 +27,7 @@
     "name":"Power_Miners",
     "startingCost":7000,
     "desc":"Editor Note: This game is getting so age restricted from all of the miners.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":25,
     "tier":0
   },
@@ -35,7 +35,7 @@
     "name":"Buff_Miners",
     "startingCost":16000,
     "desc":"They came straight from a leg day at the gym.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":100,
     "tier":1
   },
@@ -43,7 +43,7 @@
     "name":"Old Drilling Machines",
     "startingCost":35000,
     "desc":"The run on a crank, but it's not a bad start to automation.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":145,
     "tier":4
   },
@@ -51,15 +51,15 @@
     "name":"Squirtle_Miners",
     "startingCost":125000,
     "desc":"With the cool shades!",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":150,
     "tier":2
   },
   {
-    "name":"Mr Hamilton",
+    "name":"Drilling_Machine",
     "startingCost":350000,
-    "desc":"don't ask...",
-    "img":null,
+    "desc":"An upgrade from your old machines!",
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":190,
     "tier":5
   },
@@ -67,7 +67,7 @@
     "name":"Legendary_Miners",
     "startingCost":990000,
     "desc":"In the flesh.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":225,
     "tier":3
   },
@@ -75,7 +75,7 @@
     "name":"Squirrels",
     "startingCost":5100000,
     "desc":"Do not underestimate them when they want their acorns.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":330,
     "tier":3
   },
@@ -83,7 +83,7 @@
     "name":"Epic Miners",
     "startingCost":15000000,
     "desc":"Oh so epic!",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":400,
     "tier":4
   },
@@ -91,7 +91,7 @@
     "name":"Mr Hamilton",
     "startingCost":35000000,
     "desc":"don't ask...",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":450,
     "tier":4
   },
@@ -99,7 +99,7 @@
     "name":"Ghostly Miners",
     "startingCost":80000000,
     "desc":"There's plenty of them in District 12.",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":475,
     "tier":5
   },
@@ -107,7 +107,7 @@
     "name":"Steve",
     "startingCost":120000000,
     "desc":"Is that Steve from the hit game Minecraft!?",
-    "img":null,
+    "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":500,
     "tier":5
   }
