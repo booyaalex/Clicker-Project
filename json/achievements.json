@@ -4,11 +4,11 @@
         "desc":"Get your first crystal!",
         "type":0,
         "requirement": 1,
-        "img":"https://img.freepik.com/premium-vector/lightning-pixel-art-gaming-item-game-pixel-lightning_158677-585.jpg",
+        "img":"https://img.freepik.com/premium-vector/lightning-pixel-art-gaming-item-game-pixel-lightning 158677-585.jpg",
         "unlocked":true
     },
     {
-        "name":"Keep_It_Up",
+        "name":"Keep It Up",
         "desc":"Get 100 crystals!",
         "type":0,
         "requirement": 100,
@@ -16,10 +16,114 @@
         "unlocked":false
     },
     {
-        "name":"Keep_It_Up",
-        "desc":"Get 100 crystals!",
+        "name":"Keep It Up",
+        "desc":"Get 1K crystals!",
         "type":0,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 100K crystals!",
+        "type":0,
+        "requirement": 100000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 1M crystals!",
+        "type":0,
+        "requirement": 1000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 100M crystals!",
+        "type":0,
+        "requirement": 100000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 1B crystals!",
+        "type":0,
+        "requirement": 1000000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 10B crystals!",
+        "type":0,
+        "requirement": 10000000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 1 crystal per second",
+        "type":1,
+        "requirement": 1,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 10 crystal per second",
+        "type":1,
+        "requirement": 10,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 100 crystal per second",
+        "type":1,
         "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 1K crystal per second",
+        "type":1,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 10K crystal per second",
+        "type":1,
+        "requirement": 10000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 100K crystal per second",
+        "type":1,
+        "requirement": 100000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 1M crystal per second",
+        "type":1,
+        "requirement": 1000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 10M crystal per second",
+        "type":1,
+        "requirement": 10000000,
         "img":null,
         "unlocked":false
     }

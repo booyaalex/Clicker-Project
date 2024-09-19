@@ -766,6 +766,7 @@ async function achievementsPopup() {
 
 function updateAchievementInfo(id) {
     const MAIN_DIV = document.getElementById("achievementInfo");
+    MAIN_DIV.innerHTML = "";
     const TOP_DIV = document.createElement("div");
     TOP_DIV.classList.add("flex");
     TOP_DIV.classList.add("vertical-center");
