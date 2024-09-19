@@ -150,6 +150,20 @@ input[type="checkbox"] {
     display: none;
 }
 
+#achievementPopup {
+    position: absolute;
+    bottom: 10px;
+    left: calc(40vw);
+    width: 20vw;
+    height: 50px;
+    background-color: #411e08;
+    border: solid 4px #c98964;
+    border-radius: 10px;
+    color: #e0c19b;
+    z-index: 3;
+    display: none;
+}
+
 #pagePopup {
     position: absolute;
     padding: 5px;

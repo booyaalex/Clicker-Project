@@ -74,5 +74,15 @@
             "The current final tier is Sapphire, which I'll change at some point.",
             "Started to add achievements. There will be a good chunk to get, and will be saved with cookies."
         ]
+    },
+    {
+        "date":"19-9-24",
+        "title":"Achievements",
+        "bullets": [
+            "Added a bunch of new achievements.",
+            "Achevments can actually be unlocked now.",
+            "Achievements will be part of your savefile now, so they don't go away.",
+            "A popup appears when you get an achievement."
+        ]
     }
 ]

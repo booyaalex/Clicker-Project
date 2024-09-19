@@ -8,6 +8,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 const savePopup = document.getElementById("savePopup");
 const pagePopup = document.getElementById("pagePopup");
+const achievementPopup = document.getElementById("achievementPopup");
 
 let score = 0;
 let tier = 0;
@@ -20,6 +21,8 @@ let tiers = [];
 let achievements = [];
 let textnode,
     minerScrollTop = 0;
+let totalClicks = 0;
+let achievementLock = false;
 
 
 let cookieToggle = cookieToggleCheck();
@@ -45,10 +48,11 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 const save = setInterval(cookieSave, 30000);
 
 window.onload = function () {
-    setTimeout(loadSave, 200);
+    setTimeout(loadSave, 300);
     startAnimating(60);
     clicker.addEventListener("click", function () {
         score = score + cpc;
+        totalClicks++;
         scoreboard.innerHTML = Math.trunc(score);
     });
 }
@@ -81,6 +85,8 @@ function animate() {
         scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
         cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 3)}`;
         cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
+
+        checkAchievements();
     }
 }
 
@@ -469,11 +475,25 @@ function cookieSave() {
         temp = temp.replaceAll(",", "");
         console.log(temp);
 
+        //Convert Achievements Unlocked into String
+        let achievementUnlocked = "";
+        for (let i = 0; i < achievements.length; i++) {
+            if (achievements[i].unlocked) {
+                achievementUnlocked += "1";
+            } else {
+                achievementUnlocked += "0";
+            }
+        }
+        console.log(achievementUnlocked);
+
+        //Combine All Stats
+        const stats = `${totalClicks}`;
+
         //Final Save
         const d = new Date();
         d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
         let expires = "expires=" + d.toUTCString();
-        const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+        const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
         console.log(save);
         document.cookie = `saveFile=${save};${expires};path=/`;
         showSavePopup();
@@ -538,6 +558,24 @@ function loadSave() {
     }
     displayMiners();
     checkUpgrades();
+
+    //Set Achievements
+    console.log(achievements);
+    for (let i = 0; i < achievements.length; i++) {
+        if (saveArray[4].charAt(i) != null) {
+            if (saveArray[4].charAt(i) == 0) {
+                achievements[i].unlocked = false;
+            } else if (saveArray[4].charAt(i) == 1) {
+                achievements[i].unlocked = true;
+                achievementUnlock(i);
+            }
+        }
+    }
+    achievementLock = true;
+
+    //Set Stats
+    const statsArray = saveArray[5].split("α");
+    totalClicks = Number(statsArray[0]);
 }
 
 function showSavePopup() {
@@ -628,8 +666,21 @@ function downloadSaveFile() {
     temp = temp.replaceAll(",", "");
     console.log(temp);
 
+    let achievementUnlocked = "";
+    for (let i = 0; i < achievements.length; i++) {
+        if (achievements[i].unlocked) {
+            achievementUnlocked += "1";
+        } else {
+            achievementUnlocked += "0";
+        }
+    }
+    console.log(achievementUnlocked);
+
+    //Combine All Stats
+    const stats = `${totalClicks}`;
+
     //Final Save
-    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
     console.log(save);
     const file = new File([save], 'crystal_save.txt', {
         type: 'text/plain',
@@ -671,7 +722,8 @@ async function changesPopup() {
     console.log(JSON);
 
     pagePopup.innerHTML += '<h1 class="center">Change Log</h1><br><br>';
-    for (let i = 0; i < JSON.length; i++) {
+    console.log(JSON.length);
+    for (let i = JSON.length - 1; i > -1; i--) {
         const DATE = document.createElement("h2");
         textnode = document.createTextNode(JSON[i].date);
         DATE.appendChild(textnode);
@@ -695,7 +747,7 @@ async function changesPopup() {
     }
 }
 
-async function achievementsPopup() {
+async function getAchievements() {
     const response = await fetch("json/achievements.json");
     const JSON = await response.json();
     console.log(JSON);
@@ -711,6 +763,10 @@ async function achievementsPopup() {
         };
         achievements.push(achievement);
     }
+}
+getAchievements();
+
+function achievementsPopup() {
 
     pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
 
@@ -786,9 +842,45 @@ function updateAchievementInfo(id) {
     temp = document.createTextNode(achievements[id].desc);
     H2.appendChild(temp);
     BOTTOM_DIV.appendChild(H2);
-    
+
     MAIN_DIV.appendChild(TOP_DIV);
     MAIN_DIV.appendChild(BOTTOM_DIV);
+}
+
+function checkAchievements() {
+    for (let i = 0; i < achievements.length; i++) {
+        const a = achievements[i];
+        if (!a.unlocked) {
+            if (a.type == 0) {
+                if (a.requirement <= score) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 1) {
+                if (a.requirement <= cps) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 2) {
+                if (a.requirement <= totalClicks) {
+                    achievementUnlock(i);
+                }
+            }
+        }
+    }
+    
+}
+
+function achievementUnlock(i) {
+    if (achievementLock) {
+        const a = achievements[i];
+        a.unlocked = true;
+
+        achievementPopup.style.display = "flex";
+        achievementPopup.innerHTML += `<h2 id="achieveName">${achievements[i].name}</h2>`
+        setTimeout(() => {
+            achievementPopup.style.display = "none";
+            achievementPopup.removeChild(document.getElementById("achieveName"));
+        }, 5000);
+    }
 }
 
 function hidePopupPage() {

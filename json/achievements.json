@@ -5,7 +5,7 @@
         "type":0,
         "requirement": 1,
         "img":"https://img.freepik.com/premium-vector/lightning-pixel-art-gaming-item-game-pixel-lightning 158677-585.jpg",
-        "unlocked":true
+        "unlocked":false
     },
     {
         "name":"Keep It Up",
@@ -16,7 +16,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Crystals of The Kingdom",
         "desc":"Get 1K crystals!",
         "type":0,
         "requirement": 1000,
@@ -24,7 +24,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"On The Grind",
         "desc":"Get 100K crystals!",
         "type":0,
         "requirement": 100000,
@@ -32,7 +32,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Millionaire",
         "desc":"Get 1M crystals!",
         "type":0,
         "requirement": 1000000,
@@ -40,7 +40,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"There's Plenty of Crystals in the Sea",
         "desc":"Get 100M crystals!",
         "type":0,
         "requirement": 100000000,
@@ -48,7 +48,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"The Legendary Miner",
         "desc":"Get 1B crystals!",
         "type":0,
         "requirement": 1000000000,
@@ -56,7 +56,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Crystal King",
         "desc":"Get 10B crystals!",
         "type":0,
         "requirement": 10000000000,
@@ -64,7 +64,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"My First Miner!",
         "desc":"Make 1 crystal per second",
         "type":1,
         "requirement": 1,
@@ -124,6 +124,46 @@
         "desc":"Make 10M crystal per second",
         "type":1,
         "requirement": 10000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The Clicker",
+        "desc":"Click the crystal 100 times",
+        "type":2,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"I'm The Click-tin Now!",
+        "desc":"Click the crystal 500 times",
+        "type":2,
+        "requirement": 500,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Clickus Supremus",
+        "desc":"Click the crystal 1K times",
+        "type":2,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Clicking Frenzy",
+        "desc":"Click the crystal 5K times",
+        "type":2,
+        "requirement": 5000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Carpal Tunnel",
+        "desc":"Click the crystal 10K times",
+        "type":2,
+        "requirement": 10000,
         "img":null,
         "unlocked":false
     }
