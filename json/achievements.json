@@ -64,7 +64,7 @@
         "unlocked":false
     },
     {
-        "name":"My First Miner!",
+        "name":"My First Miner",
         "desc":"Make 1 crystal per second",
         "type":1,
         "requirement": 1,
@@ -80,7 +80,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"The More The Merrier",
         "desc":"Make 100 crystal per second",
         "type":1,
         "requirement": 100,
@@ -88,7 +88,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Printing Crystals",
         "desc":"Make 1K crystal per second",
         "type":1,
         "requirement": 1000,
@@ -164,6 +164,54 @@
         "desc":"Click the crystal 10K times",
         "type":2,
         "requirement": 10000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Milky Rock",
+        "desc":"Reach the quartz tier",
+        "type":3,
+        "requirement": 1,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"I'll Cu later!",
+        "desc":"Reach the copper tier",
+        "type":3,
+        "requirement": 2,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"|('v')|",
+        "desc":"Reach the amethyst tier",
+        "type":3,
+        "requirement": 3,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"It's like a banana, but shiny!",
+        "desc":"Reach the topaz tier",
+        "type":3,
+        "requirement": 4,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The Emerald Ripoff",
+        "desc":"Reach the aquamarine tier",
+        "type":3,
+        "requirement": 5,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Carpal Tunnel",
+        "desc":"Reach the sapphire tier",
+        "type":4,
+        "requirement": 6,
         "img":null,
         "unlocked":false
     }

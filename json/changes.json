@@ -82,7 +82,8 @@
             "Added a bunch of new achievements.",
             "Achevments can actually be unlocked now.",
             "Achievements will be part of your savefile now, so they don't go away.",
-            "A popup appears when you get an achievement."
+            "A popup appears when you get an achievement.",
+            "Added a button that manually saves the game."
         ]
     }
 ]

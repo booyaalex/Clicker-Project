@@ -147,6 +147,7 @@ input[type="checkbox"] {
     border: solid 4px #c98964;
     border-radius: 10px;
     color: #e0c19b;
+    z-index: 4;
     display: none;
 }
 
@@ -160,7 +161,7 @@ input[type="checkbox"] {
     border: solid 4px #c98964;
     border-radius: 10px;
     color: #e0c19b;
-    z-index: 3;
+    z-index: 4;
     display: none;
 }
 
@@ -182,7 +183,7 @@ input[type="checkbox"] {
 }
 
 .icon {
-    margin: 5px;
+    margin: 7px;
 }
 
 #close,

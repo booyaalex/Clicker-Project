@@ -601,6 +601,9 @@ function showPopupPage(page) {
 function settingsPopup() {
     pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2><br>';
     pagePopup.innerHTML += '<h3>Save to File</h3>';
+    pagePopup.innerHTML += '<button type="button" onclick="cookieSave()">Save</button>';
+
+    pagePopup.innerHTML += '<br><br><h3>Save to File</h3>';
     pagePopup.innerHTML += '<button type="button" onclick="downloadSaveFile()">Save To File</button>';
     pagePopup.innerHTML += '<br><br><h3>Load from File</h3>';
 
@@ -861,6 +864,10 @@ function checkAchievements() {
                 }
             } else if (a.type == 2) {
                 if (a.requirement <= totalClicks) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 3) {
+                if (a.requirement <= tier) {
                     achievementUnlock(i);
                 }
             }
