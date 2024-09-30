@@ -112,7 +112,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Inflation",
         "desc":"Make 1M crystal per second",
         "type":1,
         "requirement": 1000000,
@@ -120,7 +120,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Ain't nothin' gonna break my stride",
         "desc":"Make 10M crystal per second",
         "type":1,
         "requirement": 10000000,
