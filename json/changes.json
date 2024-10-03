@@ -63,5 +63,12 @@
             "Added a place to see the change log on the website itself.",
             "Worked on adding content to Aquamarine Tier."
         ]
+    },
+    {
+        "date":"3-10-24",
+        "title":"Upgrade changes",
+        "bullets": [
+            "Changed the names of some upgrades and miners."
+        ]
     }
 ]

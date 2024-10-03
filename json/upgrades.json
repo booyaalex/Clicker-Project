@@ -165,7 +165,7 @@
         "tier": 3
     },
     {
-        "name":"Another Duffel Bag",
+        "name":"Another_Duffel_Bag",
         "type": "cpc",
         "altType": null,
         "amount": 2.25,
@@ -209,18 +209,18 @@
         "tier": 4
     },
     {
-        "name":"Mrs._Candy",
+        "name":"King_Miner",
         "type": "cps",
         "altType": 1,
         "amount": 1.85,
-        "desc": "Candy? Is this forshadowing?",
+        "desc": "The strongest there is!",
         "img": null,
         "price": 15000000,
         "bought": false,
         "tier": 4
     },
     {
-        "name":"Handheld Drill",
+        "name":"Handheld_Drill",
         "type": "cpc",
         "altType": null,
         "amount": 2.35,
@@ -231,7 +231,7 @@
         "tier": 5
     },
     {
-        "name":"LED Flashlight",
+        "name":"LED_Flashlight",
         "type": "cpc",
         "altType": null,
         "amount": 2.35,

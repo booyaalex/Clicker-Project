@@ -40,7 +40,7 @@
     "tier":1
   },
   {
-    "name":"Old Drilling Machines",
+    "name":"Old_Drilling_Machines",
     "startingCost":35000,
     "desc":"The run on a crank, but it's not a bad start to automation.",
     "img":null,
@@ -56,17 +56,17 @@
     "tier":2
   },
   {
-    "name":"Mr Hamilton",
+    "name":"Drilling_Machines",
     "startingCost":350000,
-    "desc":"don't ask...",
+    "desc":"The age of automation is apon us!",
     "img":null,
     "amount":190,
     "tier":5
   },
   {
-    "name":"Legendary_Miners",
+    "name":"Angel_Miners",
     "startingCost":990000,
-    "desc":"In the flesh.",
+    "desc":"They have decended onto the mortal plane to gather crystals.",
     "img":null,
     "amount":225,
     "tier":3
@@ -80,15 +80,15 @@
     "tier":3
   },
   {
-    "name":"Epic Miners",
+    "name":"Demon_Miners",
     "startingCost":15000000,
-    "desc":"Oh so epic!",
+    "desc":"They came for the free pizza they serve at lunch time.",
     "img":null,
     "amount":400,
     "tier":4
   },
   {
-    "name":"Mr Hamilton",
+    "name":"Mr._Hamilton",
     "startingCost":35000000,
     "desc":"don't ask...",
     "img":null,
@@ -96,7 +96,7 @@
     "tier":4
   },
   {
-    "name":"Ghostly Miners",
+    "name":"Ghostly_Miners",
     "startingCost":80000000,
     "desc":"There's plenty of them in District 12.",
     "img":null,
