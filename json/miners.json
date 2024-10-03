@@ -66,7 +66,7 @@
   {
     "name":"Angel_Miners",
     "startingCost":990000,
-    "desc":"In the flesh.",
+    "desc":"They have decended to the mortal plane to aid in your mining!",
     "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":225,
     "tier":3
@@ -82,7 +82,7 @@
   {
     "name":"Demon_Miners",
     "startingCost":15000000,
-    "desc":"Oh so epic!",
+    "desc":"The have acended to the mortal plane for free pizza.",
     "img": "img/upgrades/plastic_pickaxe.png.png",
     "amount":400,
     "tier":4
