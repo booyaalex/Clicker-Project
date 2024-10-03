@@ -79,7 +79,7 @@ function animate() {
 
         //Gains
         let gain = cps / currentFps;
-        score = score + gain;
+        score += gain;
 
         //Display
         scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
@@ -771,7 +771,6 @@ getAchievements();
 
 function achievementsPopup() {
 
-    pagePopup.innerHTML = '';
     pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
 
     const MAIN_DIV = document.createElement("div");
@@ -883,6 +882,7 @@ function achievementUnlock(i) {
         a.unlocked = true;
 
         achievementPopup.style.display = "flex";
+        achievementPopup.innerHTML = "<h2>Achievement Unlocked!</h2>";
         achievementPopup.innerHTML += `<h2 id="achieveName">${achievements[i].name}</h2>`
         setTimeout(() => {
             achievementPopup.style.display = "none";
