@@ -771,6 +771,7 @@ getAchievements();
 
 function achievementsPopup() {
 
+    pagePopup.innerHTML = '';
     pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
 
     const MAIN_DIV = document.createElement("div");

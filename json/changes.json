@@ -90,7 +90,8 @@
         "date":"3-10-24",
         "title":"Name Changes",
         "bullets": [
-            "Changed the names of some miners and upgrades."
+            "Changed the names of some miners and upgrades.",
+            "Fixed a bug where the achievements bubble would display multiple achievements at once."
         ]
     }
 ]
