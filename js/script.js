@@ -8,6 +8,7 @@ const minerContainer = document.getElementById("minerContainer");
 const tierContainer = document.getElementById("tierContainer");
 const savePopup = document.getElementById("savePopup");
 const pagePopup = document.getElementById("pagePopup");
+const achievementPopup = document.getElementById("achievementPopup");
 
 let score = 0;
 let tier = 0;
@@ -17,8 +18,28 @@ let upgrades = [];
 let miners = [];
 let minersPurchased = [];
 let tiers = [];
+let achievements = [];
 let textnode,
-minerScrollTop = 0;
+    minerScrollTop = 0;
+let totalClicks = 0;
+let achievementLock = false;
+
+
+let cookieToggle = cookieToggleCheck();
+function cookieToggleCheck() {
+    let name = "cookieToggle=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return (c.substring(name.length, c.length) == 'true');
+        }
+    }
+    return true;
+}
 
 var stop = false;
 var frameCount = 0;
@@ -27,10 +48,11 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 const save = setInterval(cookieSave, 30000);
 
 window.onload = function () {
-    setTimeout(loadSave, 200);
+    setTimeout(loadSave, 300);
     startAnimating(60);
     clicker.addEventListener("click", function () {
         score = score + cpc;
+        totalClicks++;
         scoreboard.innerHTML = Math.trunc(score);
     });
 }
@@ -63,8 +85,31 @@ function animate() {
         scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
         cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 3)}`;
         cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
+
+        checkAchievements();
     }
 }
+
+async function getTiers() {
+    const response = await fetch("json/tiers.json");
+    const JSON = await response.json();
+    console.log(JSON);
+    tiers = [];
+    for (let i = 0; i < JSON.length; i++) {
+        const tier = {
+            name: JSON[i].name,
+            desc: JSON[i].desc,
+            multiplier: JSON[i].multiplier,
+            clickingBonus: JSON[i].clickingBonus,
+            nextTier: JSON[i].nextTier,
+            clickerImage: JSON[i].clickerImage
+        };
+        tiers.push(tier);
+    }
+    displayTier();
+    checkUpgrades();
+}
+getTiers();
 
 async function getUpgrades() {
     const response = await fetch("json/upgrades.json");
@@ -90,11 +135,11 @@ async function getUpgrades() {
 }
 getUpgrades();
 
-
 function displayUpgrades() {
     upgradeContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Upgrades</h1></div></div>';
     const MAIN_DIV = document.createElement("div");
     MAIN_DIV.classList.add("scroll");
+    MAIN_DIV.classList.add("fullHeight");
     for (let i = 0; i < upgrades.length; i++) {
         if (!upgrades[i].bought) {
             if (tier >= upgrades[i].tier) {
@@ -179,6 +224,7 @@ function checkUpgrades() {
             }
         }
     }
+    console.log(tiers[tier].clickingBonus);
     temp_cpc += tiers[tier].clickingBonus;
     temp_cps *= tiers[tier].multiplier;
     cpc = temp_cpc;
@@ -215,6 +261,7 @@ function displayMiners() {
     const SCROLL_DIV = document.createElement("div");
     SCROLL_DIV.id = "minerScroll";
     SCROLL_DIV.classList.add("scroll");
+    SCROLL_DIV.classList.add("fullHeight");
     for (let i = 0; i < miners.length; i++) {
         if (tier >= miners[i].tier) {
             const MAIN_DIV = document.createElement("div");
@@ -291,34 +338,12 @@ function buyMiner(a) {
     }
 }
 
-async function getTiers() {
-    const response = await fetch("json/tiers.json");
-    const JSON = await response.json();
-    console.log(JSON);
-    tiers = [];
-    for (let i = 0; i < JSON.length; i++) {
-        const tier = {
-            name: JSON[i].name,
-            desc: JSON[i].desc,
-            multiplier: JSON[i].multiplier,
-            clickingBonus: JSON[i].clickingBonus,
-            color: JSON[i].color,
-            altColor: JSON[i].altColor,
-            nextTier: JSON[i].nextTier
-        };
-        tiers.push(tier);
-    }
-    displayTier();
-    checkUpgrades();
-}
-getTiers();
-
 function displayTier() {
     tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
 
     const MAIN_DIV = document.createElement("div");
     MAIN_DIV.classList.add("flex");
-    MAIN_DIV.classList.add("scroll");
+    MAIN_DIV.classList.add("fullHeight");
 
     const DIV1 = document.createElement("div");
     DIV1.classList.add("split");
@@ -427,36 +452,52 @@ const abbrNum = (number, decPlaces) => {
 }
 
 function cookieSave() {
-    //§, α
-    //Convert Upgrades Bought into String
-    let upgradesBought = "";
-    for (let i = 0; i < upgrades.length; i++) {
-        if (upgrades[i].bought) {
-            upgradesBought += "1";
-        } else {
-            upgradesBought += "0";
+    if (cookieToggle) {
+        //§, α
+        //Convert Upgrades Bought into String
+        let upgradesBought = "";
+        for (let i = 0; i < upgrades.length; i++) {
+            if (upgrades[i].bought) {
+                upgradesBought += "1";
+            } else {
+                upgradesBought += "0";
+            }
         }
-    }
-    console.log(upgradesBought);
+        console.log(upgradesBought);
 
-    //Convert Miners Purchased into String
-    const minerArray = [];
-    for (let i = 0; i < miners.length; i++) {
-        minerArray.push(minersPurchased[i]);
-        minerArray.push("α");
-    }
-    let temp = minerArray.toString();
-    temp = temp.replaceAll(",", "");
-    console.log(temp);
+        //Convert Miners Purchased into String
+        const minerArray = [];
+        for (let i = 0; i < miners.length; i++) {
+            minerArray.push(minersPurchased[i]);
+            minerArray.push("α");
+        }
+        let temp = minerArray.toString();
+        temp = temp.replaceAll(",", "");
+        console.log(temp);
 
-    //Final Save
-    const d = new Date();
-    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
-    console.log(save);
-    document.cookie = `saveFile=${save};${expires};path=/`;
-    showSavePopup();
+        //Convert Achievements Unlocked into String
+        let achievementUnlocked = "";
+        for (let i = 0; i < achievements.length; i++) {
+            if (achievements[i].unlocked) {
+                achievementUnlocked += "1";
+            } else {
+                achievementUnlocked += "0";
+            }
+        }
+        console.log(achievementUnlocked);
+
+        //Combine All Stats
+        const stats = `${totalClicks}`;
+
+        //Final Save
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
+        console.log(save);
+        document.cookie = `saveFile=${save};${expires};path=/`;
+        showSavePopup();
+    }
 }
 
 function loadSaveFile() {
@@ -511,13 +552,30 @@ function loadSave() {
                 console.log(`${i}: ${miners[i].price}`);
                 for (let a = 0; a < Number(minerArray[i]); a++) {
                     miners[i].price = Math.ceil(miners[i].price * 1.15 ^ a + 1);
-                    console.log(`${i}: ${miners[i].price}`);
                 }
             }
         }
     }
     displayMiners();
     checkUpgrades();
+
+    //Set Achievements
+    console.log(achievements);
+    for (let i = 0; i < achievements.length; i++) {
+        if (saveArray[4].charAt(i) != null) {
+            if (saveArray[4].charAt(i) == 0) {
+                achievements[i].unlocked = false;
+            } else if (saveArray[4].charAt(i) == 1) {
+                achievements[i].unlocked = true;
+                achievementUnlock(i);
+            }
+        }
+    }
+    achievementLock = true;
+
+    //Set Stats
+    const statsArray = saveArray[5].split("α");
+    totalClicks = Number(statsArray[0]);
 }
 
 function showSavePopup() {
@@ -530,46 +588,64 @@ function showSavePopup() {
 function showPopupPage(page) {
     pagePopup.style.display = "block";
     pagePopup.innerHTML = '<i id="close" class="icon fa-solid fa-circle-xmark" onclick="hidePopupPage()"></i>';
+    document.body.style.overflowY = "hidden";
     if (page == "settings") {
         settingsPopup();
     } else if (page == "changes") {
         changesPopup();
+    } else if (page == "achievements") {
+        achievementsPopup();
     }
 }
 
 function settingsPopup() {
     pagePopup.innerHTML += '<h1 class="center">Settings</h1><br><br><h2>Saving</h2><br>';
-
     pagePopup.innerHTML += '<h3>Save to File</h3>';
+    pagePopup.innerHTML += '<button type="button" onclick="cookieSave()">Save</button>';
 
-    const SAVE_BUTTON = document.createElement("button");
-    SAVE_BUTTON.type = "button";
-    SAVE_BUTTON.setAttribute("onclick", "downloadSaveFile()");
-    textnode = document.createTextNode("Save To File");
-    SAVE_BUTTON.appendChild(textnode);
-    pagePopup.appendChild(SAVE_BUTTON);
-
-    pagePopup.innerHTML += '<br><br>';
-    pagePopup.innerHTML += '<h3>Load from File</h3>';
+    pagePopup.innerHTML += '<br><br><h3>Save to File</h3>';
+    pagePopup.innerHTML += '<button type="button" onclick="downloadSaveFile()">Save To File</button>';
+    pagePopup.innerHTML += '<br><br><h3>Load from File</h3>';
 
     const LOAD_BUTTON = document.createElement("input");
     LOAD_BUTTON.type = "file";
     LOAD_BUTTON.id = "loadSave";
-    LOAD_BUTTON.addEventListener("change", () => {
-        const file = LOAD_BUTTON.files[0];
-        readSaveFile(file);
-    });
+    LOAD_BUTTON.setAttribute("onChange", 'const file = this.files[0]; readSaveFile(file);');
     pagePopup.appendChild(LOAD_BUTTON);
 
     pagePopup.innerHTML += '<br><br>';
     pagePopup.innerHTML += '<h3>Reset Save File</h3>';
 
-    const RESET_BUTTON = document.createElement("button");
-    RESET_BUTTON.type = "button";
-    RESET_BUTTON.setAttribute("onclick", "resetSave()");
-    textnode = document.createTextNode("Reset Save");
-    RESET_BUTTON.appendChild(textnode);
-    pagePopup.appendChild(RESET_BUTTON);
+
+    pagePopup.innerHTML += '<button type="button" onclick="resetSave()">Reset Save</button>';
+
+    pagePopup.innerHTML += '<br><br><h3>Disable Cookies</h3><h4>This will also disable autosaving, and delete your current autosave.</h4>';
+    if (cookieToggle) {
+        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox">';
+    } else if (!cookieToggle) {
+        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox" checked>';
+    }
+
+    document.getElementById("toggleCookies").addEventListener("change", () => {
+        if (document.getElementById("toggleCookies").checked) {
+            cookieToggle = false;
+
+            document.cookie = "saveFile=blank;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            const d = new Date();
+            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+        } else if (!document.getElementById("toggleCookies").checked) {
+            cookieToggle = true;
+
+            const d = new Date();
+            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+        }
+    });
+    pagePopup.innerHTML += '<br><br><h3>Privacy Policy</h3><a href="privacyPolicy.html" target="_blank">Privacy Policy</a>';
 }
 
 function downloadSaveFile() {
@@ -593,8 +669,21 @@ function downloadSaveFile() {
     temp = temp.replaceAll(",", "");
     console.log(temp);
 
+    let achievementUnlocked = "";
+    for (let i = 0; i < achievements.length; i++) {
+        if (achievements[i].unlocked) {
+            achievementUnlocked += "1";
+        } else {
+            achievementUnlocked += "0";
+        }
+    }
+    console.log(achievementUnlocked);
+
+    //Combine All Stats
+    const stats = `${totalClicks}`;
+
     //Final Save
-    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}`;
+    const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
     console.log(save);
     const file = new File([save], 'crystal_save.txt', {
         type: 'text/plain',
@@ -636,7 +725,8 @@ async function changesPopup() {
     console.log(JSON);
 
     pagePopup.innerHTML += '<h1 class="center">Change Log</h1><br><br>';
-    for(let i = 0; i < JSON.length; i++) {
+    console.log(JSON.length);
+    for (let i = JSON.length - 1; i > -1; i--) {
         const DATE = document.createElement("h2");
         textnode = document.createTextNode(JSON[i].date);
         DATE.appendChild(textnode);
@@ -648,7 +738,7 @@ async function changesPopup() {
         pagePopup.appendChild(TITLE);
 
         const LIST = document.createElement("ul");
-        for(let j = 0; j < JSON[i].bullets.length; j++) {
+        for (let j = 0; j < JSON[i].bullets.length; j++) {
             const BULLET = document.createElement("li");
             textnode = document.createTextNode(JSON[i].bullets[j]);
             BULLET.appendChild(textnode);
@@ -657,6 +747,146 @@ async function changesPopup() {
         pagePopup.appendChild(LIST);
 
         pagePopup.innerHTML += '<br><br>';
+    }
+}
+
+async function getAchievements() {
+    const response = await fetch("json/achievements.json");
+    const JSON = await response.json();
+    console.log(JSON);
+    achievements = [];
+    for (let i = 0; i < JSON.length; i++) {
+        const achievement = {
+            name: JSON[i].name,
+            desc: JSON[i].desc,
+            type: JSON[i].type,
+            requirement: JSON[i].requirement,
+            img: JSON[i].img,
+            unlocked: JSON[i].unlocked
+        };
+        achievements.push(achievement);
+    }
+}
+getAchievements();
+
+function achievementsPopup() {
+
+    pagePopup.innerHTML += '<h1 class="center">Achievements</h1><br><br>';
+
+    const MAIN_DIV = document.createElement("div");
+    MAIN_DIV.classList.add("flex");
+    MAIN_DIV.classList.add("column");
+    MAIN_DIV.classList.add("fullHeight");
+
+
+    const LIST = document.createElement("div");
+    LIST.classList.add("flex");
+    LIST.classList.add("bigSec");
+
+    const CONTAINER = document.createElement("div");
+    CONTAINER.id = "achievementContainer";
+    CONTAINER.classList.add("fullHeight");
+
+    for (let i = 0; i < achievements.length; i++) {
+        const DIV = document.createElement("div");
+        DIV.id = i;
+        DIV.classList.add("achievement");
+        DIV.classList.add("flex");
+        DIV.classList.add("vertical-center");
+        DIV.classList.add("center");
+        if (!achievements[i].unlocked) {
+            DIV.classList.add("locked");
+            const LOCK = document.createElement("i");
+            LOCK.classList.add("fa-lock");
+            LOCK.classList.add("fa-solid");
+
+            DIV.appendChild(LOCK);
+        } else if (achievements[i].unlocked) {
+            DIV.setAttribute("onclick", "updateAchievementInfo(this.id)");
+            const IMG = document.createElement("img");
+            IMG.src = achievements[i].img;
+            IMG.alt = achievements[i].name;
+            DIV.appendChild(IMG);
+        }
+        CONTAINER.appendChild(DIV);
+    }
+    LIST.appendChild(CONTAINER);
+    MAIN_DIV.appendChild(LIST);
+
+    const INFO = document.createElement("div");
+    INFO.id = "achievementInfo";
+    INFO.classList.add("flex");
+    INFO.classList.add("smallSec");
+    INFO.classList.add("column");
+    MAIN_DIV.appendChild(INFO);
+
+    pagePopup.appendChild(MAIN_DIV);
+}
+
+function updateAchievementInfo(id) {
+    const MAIN_DIV = document.getElementById("achievementInfo");
+    MAIN_DIV.innerHTML = "";
+    const TOP_DIV = document.createElement("div");
+    TOP_DIV.classList.add("flex");
+    TOP_DIV.classList.add("vertical-center");
+
+    const IMG = document.createElement("img");
+    IMG.src = achievements[id].img;
+    IMG.alt = achievements[id].name;
+    TOP_DIV.appendChild(IMG);
+
+    const H1 = document.createElement("h1");
+    let temp = document.createTextNode(achievements[id].name);
+    H1.appendChild(temp);
+    TOP_DIV.appendChild(H1);
+
+    const BOTTOM_DIV = document.createElement("div");
+    const H2 = document.createElement("h2");
+    temp = document.createTextNode(achievements[id].desc);
+    H2.appendChild(temp);
+    BOTTOM_DIV.appendChild(H2);
+
+    MAIN_DIV.appendChild(TOP_DIV);
+    MAIN_DIV.appendChild(BOTTOM_DIV);
+}
+
+function checkAchievements() {
+    for (let i = 0; i < achievements.length; i++) {
+        const a = achievements[i];
+        if (!a.unlocked) {
+            if (a.type == 0) {
+                if (a.requirement <= score) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 1) {
+                if (a.requirement <= cps) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 2) {
+                if (a.requirement <= totalClicks) {
+                    achievementUnlock(i);
+                }
+            } else if (a.type == 3) {
+                if (a.requirement <= tier) {
+                    achievementUnlock(i);
+                }
+            }
+        }
+    }
+    
+}
+
+function achievementUnlock(i) {
+    if (achievementLock) {
+        const a = achievements[i];
+        a.unlocked = true;
+
+        achievementPopup.style.display = "flex";
+        achievementPopup.innerHTML += `<h2 id="achieveName">${achievements[i].name}</h2>`
+        setTimeout(() => {
+            achievementPopup.style.display = "none";
+            achievementPopup.removeChild(document.getElementById("achieveName"));
+        }, 5000);
     }
 }
 

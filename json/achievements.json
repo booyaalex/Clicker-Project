@@ -1,0 +1,218 @@
+[
+    {
+        "name":"The Journey Begins",
+        "desc":"Get your first crystal!",
+        "type":0,
+        "requirement": 1,
+        "img":"https://img.freepik.com/premium-vector/lightning-pixel-art-gaming-item-game-pixel-lightning 158677-585.jpg",
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Get 100 crystals!",
+        "type":0,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Crystals of The Kingdom",
+        "desc":"Get 1K crystals!",
+        "type":0,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"On The Grind",
+        "desc":"Get 100K crystals!",
+        "type":0,
+        "requirement": 100000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Millionaire",
+        "desc":"Get 1M crystals!",
+        "type":0,
+        "requirement": 1000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"There's Plenty of Crystals in the Sea",
+        "desc":"Get 100M crystals!",
+        "type":0,
+        "requirement": 100000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The Legendary Miner",
+        "desc":"Get 1B crystals!",
+        "type":0,
+        "requirement": 1000000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Crystal King",
+        "desc":"Get 10B crystals!",
+        "type":0,
+        "requirement": 10000000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"My First Miner",
+        "desc":"Make 1 crystal per second",
+        "type":1,
+        "requirement": 1,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Work Force",
+        "desc":"Make 10 crystal per second",
+        "type":1,
+        "requirement": 10,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The More The Merrier",
+        "desc":"Make 100 crystal per second",
+        "type":1,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Printing Crystals",
+        "desc":"Make 1K crystal per second",
+        "type":1,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 10K crystal per second",
+        "type":1,
+        "requirement": 10000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Keep It Up",
+        "desc":"Make 100K crystal per second",
+        "type":1,
+        "requirement": 100000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Inflation",
+        "desc":"Make 1M crystal per second",
+        "type":1,
+        "requirement": 1000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Ain't nothin' gonna break my stride",
+        "desc":"Make 10M crystal per second",
+        "type":1,
+        "requirement": 10000000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The Clicker",
+        "desc":"Click the crystal 100 times",
+        "type":2,
+        "requirement": 100,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"I'm The Click-tin Now!",
+        "desc":"Click the crystal 500 times",
+        "type":2,
+        "requirement": 500,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Clickus Supremus",
+        "desc":"Click the crystal 1K times",
+        "type":2,
+        "requirement": 1000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Clicking Frenzy",
+        "desc":"Click the crystal 5K times",
+        "type":2,
+        "requirement": 5000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Carpal Tunnel",
+        "desc":"Click the crystal 10K times",
+        "type":2,
+        "requirement": 10000,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Milky Rock",
+        "desc":"Reach the quartz tier",
+        "type":3,
+        "requirement": 1,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"I'll Cu later!",
+        "desc":"Reach the copper tier",
+        "type":3,
+        "requirement": 2,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"|('v')|",
+        "desc":"Reach the amethyst tier",
+        "type":3,
+        "requirement": 3,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"It's like a banana, but shiny!",
+        "desc":"Reach the topaz tier",
+        "type":3,
+        "requirement": 4,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"The Emerald Ripoff",
+        "desc":"Reach the aquamarine tier",
+        "type":3,
+        "requirement": 5,
+        "img":null,
+        "unlocked":false
+    },
+    {
+        "name":"Carpal Tunnel",
+        "desc":"Reach the sapphire tier",
+        "type":4,
+        "requirement": 6,
+        "img":null,
+        "unlocked":false
+    }
+]

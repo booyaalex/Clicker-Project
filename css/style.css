@@ -3,8 +3,12 @@
     font-family: pixellari;
 }
 
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
     display: none;
+}
+
+a, a:visited {
+    color:  #e0c19b;
 }
 
 body {
@@ -48,6 +52,7 @@ main {
 .flex.vertical-center {
     align-items: center;
 }
+
 .flex.vertical-end {
     align-items: end;
 }
@@ -83,13 +88,20 @@ main {
     width: 100%;
     height: 35%;
 }
-.scroll {
-    overflow-y: scroll;
+
+.fullHeight {
     height: 100%;
 }
+
+.scroll {
+    overflow-y: scroll;
+}
+
 .split {
     width: 50%;
+    height: 100%;
 }
+
 .container {
     background-color: #411e08;
     color: #e0c19b;
@@ -99,6 +111,7 @@ main {
     height: 85%;
     position: relative;
 }
+
 .containerTitle {
     position: absolute;
     top: -45px;
@@ -107,6 +120,12 @@ main {
     border-radius: 10px;
     padding: 5px;
     z-index: 2;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 #logoImage {
@@ -128,6 +147,21 @@ main {
     border: solid 4px #c98964;
     border-radius: 10px;
     color: #e0c19b;
+    z-index: 4;
+    display: none;
+}
+
+#achievementPopup {
+    position: absolute;
+    bottom: 10px;
+    left: calc(40vw);
+    width: 20vw;
+    height: 50px;
+    background-color: #411e08;
+    border: solid 4px #c98964;
+    border-radius: 10px;
+    color: #e0c19b;
+    z-index: 4;
     display: none;
 }
 
@@ -144,11 +178,16 @@ main {
     color: white;
 }
 
-.icon {
-    margin: 5px;
+#achievementContainer {
+    width: 100%;
 }
 
-#close, nav {
+.icon {
+    margin: 7px;
+}
+
+#close,
+nav {
     font-size: 40px;
 }
 
@@ -162,16 +201,39 @@ main {
 .upgrade,
 .miner,
 .tier,
-.icon {
+.icon,
+.achievement {
     cursor: pointer;
 }
 
 .upgrade,
 .miner,
-.tier {
+.tier,
+.achievement {
     border: solid 2px #c98964;
     border-radius: 10px;
     margin: 5px;
+}
+
+.achievement {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    position: relative;
+}
+.achievement.locked {
+    cursor: default;
+}
+.locked i {
+    font-size: 45px;
+    position: absolute;
+}
+.achievement img {
+    width: 45px;
+    position: absolute;
+}
+#achievementInfo img {
+    width: 100px;
 }
 
 .upgradeImage,
@@ -183,8 +245,14 @@ main {
 .miner {
     width: 100%;
 }
+
 .tier {
     height: 95%;
+    background-color: #411e08;
+}
+.tierImage {
+    width: 75px;
+    height: 75px;
 }
 
 #clickingContainer {
@@ -262,6 +330,7 @@ main {
     #logoImage {
         display: none;
     }
+
     #tierContainer {
         width: 100%;
     }
