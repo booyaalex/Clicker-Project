@@ -104,7 +104,7 @@
         "unlocked":false
     },
     {
-        "name":"Keep It Up",
+        "name":"Industrialization",
         "desc":"Make 100K crystal per second",
         "type":1,
         "requirement": 100000,
