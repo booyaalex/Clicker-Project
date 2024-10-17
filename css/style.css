@@ -292,6 +292,8 @@ nav {
     width: 250px;
     height: 250px;
     background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
     animation-duration: 3s;
     animation-name: rotation;
     animation-iteration-count: infinite;

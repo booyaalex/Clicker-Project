@@ -340,6 +340,7 @@ function buyMiner(a) {
 
 function displayTier() {
     tierContainer.innerHTML = '<div class="flex center"><div class="containerTitle"><h1>Tiers</h1></div></div>';
+    clicker.style.backgroundImage = `url(${tiers[tier].clickerImage})`;
 
     const MAIN_DIV = document.createElement("div");
     MAIN_DIV.classList.add("flex");

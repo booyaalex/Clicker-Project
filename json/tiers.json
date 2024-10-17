@@ -5,7 +5,7 @@
     "multiplier":1,
     "clickingBonus":0,
     "nextTier":20000,
-    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
+    "clickerImage": "img/clickers/stone.png.png"
   },
   {
     "name":"Quartz",
