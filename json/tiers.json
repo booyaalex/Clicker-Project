@@ -13,7 +13,7 @@
     "multiplier":1.5,
     "clickingBonus":3,
     "nextTier":200000,
-    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
+    "clickerImage": "assets/img/clickers/quartz.png.png"
   },
   {
     "name":"Copper",
@@ -21,7 +21,7 @@
     "multiplier":2.25,
     "clickingBonus":9,
     "nextTier":2000000,
-    "clickerImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JuFodl5zSw6IB7gPQ28B_X-pgKrWoorcFA&s"
+    "clickerImage": "assets/img/clickers/copper.png.png"
   },
   {
     "name":"Amethyst",
@@ -29,7 +29,7 @@
     "multiplier":4,
     "clickingBonus":20,
     "nextTier":25000000,
-    "clickerImage": null
+    "clickerImage": "assets/img/clickers/amethyst.png.png"
   },
   {
     "name":"Topaz",
@@ -37,7 +37,7 @@
     "multiplier":5.75,
     "clickingBonus":45,
     "nextTier":115000000,
-    "clickerImage": null
+    "clickerImage": "assets/img/clickers/topaz.png.png"
   },
   {
     "name":"Aquamarine",
