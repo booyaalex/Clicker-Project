@@ -93,5 +93,14 @@
             "Changed the names of some miners and upgrades.",
             "Fixed a bug where the achievements bubble would display multiple achievements at once."
         ]
+    },
+    {
+        "date":"18-10-24",
+        "title":"ROCK",
+        "bullets": [
+            "We got ROCK image!!!!!",
+            "Removed the black square.",
+            "Added a drop shadow to the clicker."
+        ]
     }
 ]

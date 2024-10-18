@@ -5,7 +5,7 @@
     "multiplier":1,
     "clickingBonus":0,
     "nextTier":20000,
-    "clickerImage": "img/clickers/stone.png.png"
+    "clickerImage": "assets/img/clickers/stone.png.png"
   },
   {
     "name":"Quartz",

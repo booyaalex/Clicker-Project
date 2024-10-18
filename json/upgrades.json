@@ -5,7 +5,7 @@
         "altType": null,
         "amount": 2,
         "desc": "I most likely got it from the dollar store.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 15,
         "bought": false,
         "tier": 0
@@ -16,7 +16,7 @@
         "altType": null,
         "amount": 2,
         "desc": "Made from the finest 3 planks of wood you'll ever find.",
-        "img": "img/upgrades/wood_pickaxe.png.png",
+        "img": "assets/img/upgrades/wood_pickaxe.png.png",
         "price": 100,
         "bought": false,
         "tier": 0
@@ -27,7 +27,7 @@
         "altType": null,
         "amount": 1.5,
         "desc": "Finally! I don't have to carry it back with my hands!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 500,
         "bought": false,
         "tier": 0
@@ -38,7 +38,7 @@
         "altType": 1,
         "amount": 1.5,
         "desc": "He's here to help you on your crystal mining journey!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 1500,
         "bought": false,
         "tier": 0
@@ -49,7 +49,7 @@
         "altType": 1,
         "amount": 2,
         "desc": "It's pretty old, but it'll do for your purposes.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 3000,
         "bought": false,
         "tier": 1
@@ -60,7 +60,7 @@
         "altType": 1,
         "amount": 2,
         "desc": "The king of the mines!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 5000,
         "bought": false,
         "tier": 0
@@ -71,7 +71,7 @@
         "altType": null,
         "amount": 1.5,
         "desc": "Just stuff it all in there.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 7500,
         "bought": false,
         "tier": 1
@@ -82,7 +82,7 @@
         "altType": null,
         "amount": 1.5,
         "desc": "Why didn't I get this sooner!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 20000,
         "bought": false,
         "tier": 2
@@ -93,7 +93,7 @@
         "altType": null,
         "amount": 2,
         "desc": "We finally upgraded from wood!",
-        "img": "img/upgrades/stone_pickaxe.png.png",
+        "img": "assets/img/upgrades/stone_pickaxe.png.png",
         "price": 35000,
         "bought": false,
         "tier": 1
@@ -104,7 +104,7 @@
         "altType": 1,
         "amount": 1.75,
         "desc": "She's ready to kick some crystal a--!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 75000,
         "bought": false,
         "tier": 1
@@ -115,7 +115,7 @@
         "altType": null,
         "amount": 1.9,
         "desc": "It's supposed to give 2x strength, but it seems a bit short.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 125000,
         "bought": false,
         "tier": 5
@@ -126,7 +126,7 @@
         "altType": null,
         "amount": 1.75,
         "desc": "We're starting to get somewhere!",
-        "img": "img/upgrades/copper_pickaxe.png.png",
+        "img": "assets/img/upgrades/copper_pickaxe.png.png",
         "price": 150000,
         "bought": false,
         "tier": 1
@@ -137,7 +137,7 @@
         "altType": null,
         "amount": 2,
         "desc": "Even your pickaxes need pickaxes!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 250000,
         "bought": false,
         "tier": 4
@@ -148,7 +148,7 @@
         "altType": null,
         "amount": 1.5,
         "desc": "It's getting harder to carry.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 500000,
         "bought": false,
         "tier": 2
@@ -159,7 +159,7 @@
         "altType": null,
         "amount": 2.5,
         "desc": "Looking snazzy!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 1500000,
         "bought": false,
         "tier": 3
@@ -170,7 +170,7 @@
         "altType": null,
         "amount": 2.25,
         "desc": "Keep up the stuffing!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 2000000,
         "bought": false,
         "tier": 4
@@ -181,7 +181,7 @@
         "altType": 1,
         "amount": 2,
         "desc": "How many miners are there!?",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 3400000,
         "bought": false,
         "tier": 3
@@ -192,7 +192,7 @@
         "altType": null,
         "amount": 4,
         "desc": "We're starting to get somewhere!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 5000000,
         "bought": false,
         "tier": 4
@@ -203,7 +203,7 @@
         "altType": null,
         "amount": 2.75,
         "desc": "Slash those rocks up!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 7500000,
         "bought": false,
         "tier": 4
@@ -225,7 +225,7 @@
         "altType": null,
         "amount": 2.35,
         "desc": "It's a bit better than a pickaxe, not by much.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 35000000,
         "bought": false,
         "tier": 5
@@ -236,7 +236,7 @@
         "altType": null,
         "amount": 2.35,
         "desc": "It's slightly brighter.",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 100000000,
         "bought": false,
         "tier": 5
@@ -247,7 +247,7 @@
         "altType": 1,
         "amount": 1.8,
         "desc": "Here to save the day, or the mine from collapsing again.d",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 450000000,
         "bought": false,
         "tier": 5
@@ -258,7 +258,7 @@
         "altType": null,
         "amount": 2.5,
         "desc": "It's so strong it can even protect you from headaches!",
-        "img": "img/upgrades/plastic_pickaxe.png.png",
+        "img": "assets/img/upgrades/plastic_pickaxe.png.png",
         "price": 1000000000,
         "bought": false,
         "tier": 5

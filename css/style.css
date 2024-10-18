@@ -1,3 +1,8 @@
+@font-face {
+    font-family: pixelarri;
+    src: url("assets/fonts/Pixellari.ttf");
+}
+
 * {
     margin: 0;
     font-family: pixellari;
@@ -7,8 +12,9 @@
     display: none;
 }
 
-a, a:visited {
-    color:  #e0c19b;
+a,
+a:visited {
+    color: #e0c19b;
 }
 
 body {
@@ -221,17 +227,21 @@ nav {
     display: inline-flex;
     position: relative;
 }
+
 .achievement.locked {
     cursor: default;
 }
+
 .locked i {
     font-size: 45px;
     position: absolute;
 }
+
 .achievement img {
     width: 45px;
     position: absolute;
 }
+
 #achievementInfo img {
     width: 100px;
 }
@@ -250,9 +260,10 @@ nav {
     height: 95%;
     background-color: #411e08;
 }
+
 .tierImage {
-    width: 75px;
-    height: 75px;
+    max-width: 75px;
+    max-height: 75px;
 }
 
 #clickingContainer {
@@ -291,9 +302,11 @@ nav {
 #clicker {
     width: 250px;
     height: 250px;
-    background-color: black;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    filter: drop-shadow(20px 20px 15px black);
     animation-duration: 3s;
     animation-name: rotation;
     animation-iteration-count: infinite;
@@ -335,12 +348,5 @@ nav {
 
     #tierContainer {
         width: 100%;
-    }
-
-    #clicker {
-        top: calc(55% - 105px);
-        left: calc(50% - 100px);
-        width: 200px;
-        height: 200px;
     }
 }
