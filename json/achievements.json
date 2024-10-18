@@ -172,7 +172,7 @@
         "desc":"Reach the quartz tier",
         "type":3,
         "requirement": 1,
-        "img":null,
+        "img":"assets/img/clickers/quartz.png.png",
         "unlocked":false
     },
     {
@@ -180,7 +180,7 @@
         "desc":"Reach the copper tier",
         "type":3,
         "requirement": 2,
-        "img":null,
+        "img":"assets/img/clickers/copper.png.png",
         "unlocked":false
     },
     {
@@ -188,7 +188,7 @@
         "desc":"Reach the amethyst tier",
         "type":3,
         "requirement": 3,
-        "img":null,
+        "img":"assets/img/clickers/amethyst.png.png",
         "unlocked":false
     },
     {
@@ -196,7 +196,7 @@
         "desc":"Reach the topaz tier",
         "type":3,
         "requirement": 4,
-        "img":null,
+        "img":"assets/img/clickers/topaz.png.png",
         "unlocked":false
     },
     {
