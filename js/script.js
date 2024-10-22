@@ -26,6 +26,7 @@ let achievementLock = false;
 
 
 let cookieToggle = cookieToggleCheck();
+let developerToggle = false;
 function cookieToggleCheck() {
     let name = "cookieToggle=";
     let ca = document.cookie.split(';');
@@ -644,6 +645,18 @@ function settingsPopup() {
             d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
             let expires = "expires=" + d.toUTCString();
             document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+        }
+    });
+
+    pagePopup.innerHTML += '<br><br><h3>Developer Stuff</h3><h4>DW about this.</h4>';
+    pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox">';
+    document.getElementById("toggleDeveloper").addEventListener("change", () => {
+        if (document.getElementById("toggleDeveloper").checked) {
+            developerToggle = true;
+            body.innerHTML += `<p id="dev">${document.cookie}</p>`;
+        } else if (!document.getElementById("toggleDeveloper").checked) {
+            developerToggle = false;
+            document.getElementById("dev").remove();
         }
     });
     pagePopup.innerHTML += '<br><br><h3>Privacy Policy</h3><a href="privacyPolicy.html" target="_blank">Privacy Policy</a>';
