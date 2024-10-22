@@ -85,7 +85,12 @@ function animate() {
         //Display
         scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
         cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 3)}`;
-        cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
+        
+        if(developerToggle) {
+            cpcboard.innerHTML = `Cookie: ${document.cookie}`;
+        } else {
+            cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
+        }
 
         checkAchievements();
     }
@@ -649,14 +654,16 @@ function settingsPopup() {
     });
 
     pagePopup.innerHTML += '<br><br><h3>Developer Stuff</h3><h4>DW about this.</h4>';
-    pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox">';
+    if (developerToggle) {
+        pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox" checked>';
+    } else if (!developerToggle) {
+        pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox">';
+    } 
     document.getElementById("toggleDeveloper").addEventListener("change", () => {
         if (document.getElementById("toggleDeveloper").checked) {
             developerToggle = true;
-            body.innerHTML += `<p id="dev">${document.cookie}</p>`;
         } else if (!document.getElementById("toggleDeveloper").checked) {
             developerToggle = false;
-            document.getElementById("dev").remove();
         }
     });
     pagePopup.innerHTML += '<br><br><h3>Privacy Policy</h3><a href="privacyPolicy.html" target="_blank">Privacy Policy</a>';
