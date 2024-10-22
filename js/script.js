@@ -628,50 +628,47 @@ function settingsPopup() {
 
     pagePopup.innerHTML += '<br><br><h3>Disable Cookies</h3><h4>This will also disable autosaving, and delete your current autosave.</h4>';
     if (cookieToggle) {
-        pagePopup.innerHTML += '<input id="toggleCookies" onchange="cookieToggle()" type="checkbox">';
+        pagePopup.innerHTML += '<input id="toggleCookies" onchange="cookieToggler()" type="checkbox">';
     } else if (!cookieToggle) {
-        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox" onchange="cookieToggle()" checked>';
+        pagePopup.innerHTML += '<input id="toggleCookies" type="checkbox" onchange="cookieToggler()" checked>';
     }
-
-
-    function cookieToggle() {
-        if (document.getElementById("toggleCookies").checked) {
-            cookieToggle = false;
-
-            document.cookie = "saveFile=blank;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-            const d = new Date();
-            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
-        } else if (!document.getElementById("toggleCookies").checked) {
-            cookieToggle = true;
-
-            const d = new Date();
-            d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
-        }
-    }
-    document.getElementById("toggleCookies").addEventListener("change", () => {
-        
-    });
 
     pagePopup.innerHTML += '<br><br><h3>Developer Stuff</h3><h4>DW about this.</h4>';
     if (developerToggle) {
-        pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox" checked>';
+        pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox" onchange="devToggle()" checked>';
     } else if (!developerToggle) {
         pagePopup.innerHTML += '<input id="toggleDeveloper" type="checkbox" onchange="devToggle()">';
     } 
 
-    function devToggle() {
-        if (document.getElementById("toggleDeveloper").checked) {
-            developerToggle = true;
-        } else if (!document.getElementById("toggleDeveloper").checked) {
-            developerToggle = false;
-        }
-    }
+    
     pagePopup.innerHTML += '<br><br><h3>Privacy Policy</h3><a href="privacyPolicy.html" target="_blank">Privacy Policy</a>';
+}
+
+function cookieToggler() {
+    if (document.getElementById("toggleCookies").checked) {
+        cookieToggle = false;
+
+        document.cookie = "saveFile=blank;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+        const d = new Date();
+        d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+    } else if (!document.getElementById("toggleCookies").checked) {
+        cookieToggle = true;
+
+        const d = new Date();
+        d.setTime(d.getTime() + (60 * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = `cookieToggle=${cookieToggle};${expires};path=/`;
+    }
+}
+function devToggle() {
+    if (document.getElementById("toggleDeveloper").checked) {
+        developerToggle = true;
+    } else if (!document.getElementById("toggleDeveloper").checked) {
+        developerToggle = false;
+    }
 }
 
 function downloadSaveFile() {
