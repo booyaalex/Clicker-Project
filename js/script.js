@@ -476,7 +476,7 @@ function cookieSave() {
         const minerArray = [];
         for (let i = 0; i < miners.length; i++) {
             minerArray.push(minersPurchased[i]);
-            minerArray.push("α");
+            minerArray.push("-");
         }
         let temp = minerArray.toString();
         temp = temp.replaceAll(",", "");
@@ -500,7 +500,7 @@ function cookieSave() {
         const d = new Date();
         d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
         let expires = "expires=" + d.toUTCString();
-        const save = `${Math.trunc(score)}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
+        const save = `${Math.trunc(Number(score))}§${upgradesBought}§${temp}§${tier}§${achievementUnlocked}§${stats}`;
         console.log(save);
         document.cookie = `saveFile=${save};${expires};path=/`;
         showSavePopup();
@@ -551,7 +551,7 @@ function loadSave() {
     displayUpgrades();
 
     //Set Miners
-    const minerArray = saveArray[2].split("α");
+    const minerArray = saveArray[2].split("-");
     for (let i = 0; i < miners.length; i++) {
         if (Number(minerArray[i]) != null) {
             minersPurchased[i] = Number(minerArray[i]);
@@ -581,7 +581,7 @@ function loadSave() {
     achievementLock = true;
 
     //Set Stats
-    const statsArray = saveArray[5].split("α");
+    const statsArray = saveArray[5].split("-");
     totalClicks = Number(statsArray[0]);
 }
 
@@ -686,7 +686,7 @@ function downloadSaveFile() {
     const minerArray = [];
     for (let i = 0; i < miners.length; i++) {
         minerArray.push(minersPurchased[i]);
-        minerArray.push("α");
+        minerArray.push("-");
     }
     let temp = minerArray.toString();
     temp = temp.replaceAll(",", "");
