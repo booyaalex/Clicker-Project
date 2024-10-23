@@ -103,5 +103,13 @@
             "Added a drop shadow to the clicker.",
             "Added images for some achievements."
         ]
+    },
+    {
+        "date":"22-10-24",
+        "title":"iOS Fixes",
+        "bullets": [
+            "I fixed an issue where the cookies on iOS were making the score NaN. Now it should work, and all is good.",
+            "I added a developer mdoe that should help me fix issues easier. I'll work tomorrow to impliment it more fully."
+        ]
     }
 ]
