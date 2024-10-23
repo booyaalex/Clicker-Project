@@ -83,13 +83,13 @@ function animate() {
         score += gain;
 
         //Display
-        scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 3)}`;
-        cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 3)}`;
+        scoreboard.innerHTML = `Crystals: ${abbrNum(Math.trunc(score), 2)}`;
+        cpsboard.innerHTML = `CPS: ${abbrNum(Math.trunc(cps), 2)}`;
         
         if(developerToggle) {
             cpcboard.innerHTML = `Cookie: ${document.cookie}`;
         } else {
-            cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 3)}`;
+            cpcboard.innerHTML = `CPC: ${abbrNum(Math.trunc(cpc), 2)}`;
         }
 
         checkAchievements();
@@ -179,7 +179,7 @@ function displayUpgrades() {
 
                 const PRICE = document.createElement("h3");
                 PRICE.classList.add("upgradePrice");
-                textnode = document.createTextNode(`$${abbrNum(upgrades[i].price, 3)}`);
+                textnode = document.createTextNode(`$${abbrNum(upgrades[i].price, 2)}`);
                 PRICE.appendChild(textnode);
                 TOP_DIV.appendChild(PRICE);
 
@@ -310,7 +310,7 @@ function displayMiners() {
 
             const PRICE = document.createElement("h3");
             PRICE.classList.add("minerPrice");
-            textnode = document.createTextNode(`$${abbrNum(miners[i].price, 3)}`);
+            textnode = document.createTextNode(`$${abbrNum(miners[i].price, 2)}`);
             PRICE.appendChild(textnode);
             TOP_DIV.appendChild(PRICE);
 
@@ -412,7 +412,7 @@ function displayTier() {
     UPGRADE_DIV.appendChild(UPGRADE_TEXT);
 
     const UPGRADE_COST = document.createElement("h1");
-    textnode = document.createTextNode(`$${abbrNum(tiers[tier].nextTier, 3)}`);
+    textnode = document.createTextNode(`$${abbrNum(tiers[tier].nextTier, 2)}`);
     UPGRADE_COST.appendChild(textnode);
     UPGRADE_DIV.appendChild(UPGRADE_COST);
 
